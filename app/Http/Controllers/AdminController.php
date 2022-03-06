@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
+use App\Models\Order;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Carbon\carbon;
@@ -17,7 +18,8 @@ class AdminController extends Controller
 
     public function Dashboard()
     {
-        return view('admin.index');
+        $orders = Order::where('status','pending')->orderBy('id','DESC')->paginate(2);
+        return view('admin.index', compact('orders'));
     } // end method
 
     public function Login(Request $request)

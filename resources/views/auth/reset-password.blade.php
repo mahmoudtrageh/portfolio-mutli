@@ -1,48 +1,69 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.master_home')
+@section('home_content')
+@section('title')
+    {{ trans('site.reset-password') }}
+@endsection
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+<!-- Page Title
+============================================= -->
+<section id="page-title" style="background-color: #752651;">
 
-        <form method="POST" action="{{ route('password.update') }}">
-            @csrf
+    <div class="container clearfix">
+        <h1 class="text-white">إعادة تعيين كلمة المرور</h1>
+        <ol class="breadcrumb">
 
-            <!-- Password Reset Token -->
-            <input type="hidden" name="token" value="{{ $request->route('token') }}">
+        </ol>
+    </div>
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+</section><!-- #page-title end -->
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
-            </div>
+<div class="body-content">
+    <div class="container">
+        <div class="sign-in-page">
+            <div class="row">
+                <!-- Sign-in -->
+                <div class="col-md-6 col-sm-6 sign-in mt-5">
+                    <h4 class="">{{ trans('site.reset-password') }}</h4>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+                    <form method="POST" action="{{ route('password.update') }}">
+                        @csrf
 
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required />
-            </div>
+                        <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                        <div class="form-group">
+                            <label class="info-title" for="exampleInputEmail1">{{ trans('site.email') }}
+                                <span>*</span></label>
+                            <input type="email" id="email" name="email"
+                                class="form-control unicase-form-control text-input">
+                        </div>
 
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password_confirmation" required />
-            </div>
+                        <div class="form-group">
+                            <label class="info-title" for="exampleInputEmail1">{{ trans('site.password') }}
+                                <span>*</span></label>
+                            <input type="password" id="password" name="password"
+                                class="form-control unicase-form-control text-input">
+                        </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Reset Password') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+                        <div class="form-group">
+                            <label class="info-title"
+                                for="exampleInputEmail1">{{ trans('site.confirm-password') }}<span>*</span></label>
+                            <input type="password" id="password_confirmation" name="password_confirmation"
+                                class="form-control unicase-form-control text-input">
+                        </div>
+
+
+                        <button type="submit"
+                            class="btn-upper btn btn-primary checkout-page-button">{{ trans('site.reset-password') }}</button>
+                    </form>
+
+
+                </div>
+                <!-- Sign-in -->
+
+                <!-- create a new account -->
+            </div><!-- /.row -->
+        </div><!-- /.sigin-in-->
+      
+    </div><!-- /.container -->
+</div><!-- /.body-content -->
+@endsection

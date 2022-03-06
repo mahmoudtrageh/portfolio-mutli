@@ -116,7 +116,7 @@ body {
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: 'Cairo', sans-serif;
   line-height: 1.5;
   background-color: #fbfbfb;
   direction:rtl;
@@ -14132,8 +14132,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
   padding: 10px; }
   .sidebar-menu > li {
     position: relative;
-    margin: 0;
-    border-radius: 15px; }
+    margin: 0;}
     .sidebar-menu > li.user-profile:hover > a, .sidebar-menu > li.user-profile:active > a, .sidebar-menu > li.user-profile.active > a {
       color: #000000;
       background-color: transparent !important; }
@@ -14493,8 +14492,7 @@ body .main-header .navbar .nav > li.search-box > a:hover, body .main-header .nav
     opacity: 0.6;
     white-space: nowrap;
     align-items: center;
-    line-height: 25px;
-    border-radius: 15px; }
+    line-height: 25px;}
     .sidebar-menu li > a > .pull-left-container {
       position: absolute;
       left: 10px;
@@ -17888,7 +17886,7 @@ time {
   font-size: 20px;
   background: #ffffff;
   color: #475f7b;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Cairo', sans-serif;
   text-align: center;
   font-size: 1.429rem; }
   .grid-stack-item-content .fa {
@@ -18274,7 +18272,7 @@ time {
   height: 115px;
   width: 115px;
   line-height: 115px;
-  font-family: "Rubik", sans-serif !important; }
+  font-family: 'Cairo', sans-serif; }
 
 .icon i {
   width: 60px;
@@ -19744,7 +19742,7 @@ textarea.form-control {
 .info-box-number {
   font-weight: 400;
   font-size: 1.5714285714rem;
-  font-family: "Rubik", sans-serif; }
+  font-family: 'Cairo', sans-serif; }
 
 .info-box-text, .progress-description {
   display: block;
@@ -19753,7 +19751,7 @@ textarea.form-control {
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: 500;
-  font-family: "Rubik", sans-serif; }
+  font-family: 'Cairo', sans-serif; }
 
 .progress-description {
   margin: 0; }
@@ -23806,7 +23804,7 @@ button.btn.dropdown-toggle:after {
 .c-progress-steps {
   margin: 0;
   list-style-type: none;
-  font-family: "IBM Plex Sans", sans-serif; }
+  font-family: 'Cairo', sans-serif; }
   .c-progress-steps li {
     position: relative;
     font-size: 13px;

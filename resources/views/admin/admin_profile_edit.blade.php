@@ -53,12 +53,12 @@
 		<div class="form-group">
 		<h5>{{trans('admin.profile-image')}} <span class="text-danger">*</span></h5>
 		<div class="controls">
- <input type="file" name="profile_photo_path" class="form-control" required="" id="image"> </div>
+ <input type="file" name="img" class="form-control" required="" id="image"> </div>
 	</div>
 				</div><!-- end cold md 6 --> 
 
 				<div class="col-md-6">
-	<img id="showImage" src="{{ (!empty($editData->profile_photo_path))? url('upload/admin_images/'.$editData->profile_photo_path):url('upload/no_image.jpg') }}" style="width: 100px; height: 100px;">				
+	<img id="showImage" src="{{ (!empty($editData->img))? url('upload/admin_images/'.$editData->img):url('upload/no_image.jpg') }}" style="width: 100px; height: 100px;">				
 
 				</div><!-- end cold md 6 --> 
 

@@ -6,10 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{ asset('backend/images/favicon.ico') }}">
-
+    @php
+    $settings = DB::table('settings')->first();
+  @endphp
+    <link rel="icon" href="{{asset($settings->favicon)}}">
+  
+  
     <title>{{trans('admin.site-name')}} - {{trans('admin.dashboard')}}</title>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300&display=swap" rel="stylesheet">
+
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="{{ asset('backend/css/vendors_css.css') }}">
 	  
@@ -45,7 +50,7 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
 	  
-
+    @include('errors.errors')
     @yield('admin')
 
 
@@ -63,13 +68,13 @@
 </div>
 <!-- ./wrapper -->
   	
-	 
 	<!-- Vendor JS -->
+
 	<script src="{{ asset('backend/js/vendors.min.js') }}"></script>
     <script src="{{ asset('../assets/icons/feather-icons/feather.min.js') }}"></script>	
-	<script src="{{ asset('../assets/vendor_components/easypiechart/dist/jquery.easypiechart.js') }}"></script>
-	<script src="{{ asset('../assets/vendor_components/apexcharts-bundle/irregular-data-series.js') }}"></script>
-	<script src="{{ asset('../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script>
+	{{-- <script src="{{ asset('../assets/vendor_components/easypiechart/dist/jquery.easypiechart.js') }}"></script> --}}
+	{{-- <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/irregular-data-series.js') }}"></script> --}}
+	{{-- <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script> --}}
 
   <script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js') }}"></script>
   <script src="{{ asset('backend/js/pages/data-table.js') }}"></script>
@@ -91,6 +96,7 @@
 
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  
 
 <script>
  @if(Session::has('message'))
@@ -120,7 +126,15 @@
 
  <script src="{{ asset('backend/js/code.js') }}"></script>
 	
+ <script>
 
-	
+  setTimeout(fade_out, 5000);
+
+  function fade_out() {
+      $("#checker").fadeOut().empty();
+  }
+
+</script>
+
 </body>
 </html>

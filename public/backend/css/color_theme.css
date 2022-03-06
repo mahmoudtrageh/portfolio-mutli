@@ -415,8 +415,7 @@ Theme Primary Color
   color: #0F5EF7; }
 
 .theme-primary.light-skin .sidebar-menu > li.active.treeview > a {
-  background: linear-gradient(45deg, #0F5EF7, #7a15f7);
-  color: #ffffff !important;
+  background: transparent;color: #000!important;
   -webkit-box-shadow: 0px 0px 12px 0px rgba(15, 94, 247, 0.35);
   box-shadow: 0px 0px 12px 0px rgba(15, 94, 247, 0.35); }
   .theme-primary.light-skin .sidebar-menu > li.active.treeview > a > i {
@@ -427,14 +426,10 @@ Theme Primary Color
     border-color: transparent #fafafa transparent transparent !important; }
 .theme-primary.light-skin .sidebar-menu > li.treeview .treeview-menu li a {
   color: #475f7b; }
-.theme-primary.light-skin.sidebar-mini.sidebar-collapse .sidebar-menu > li.active > a > span {
-  background: linear-gradient(45deg, #0F5EF7, #7a15f7) !important;
-  color: #ffffff !important; }
 .theme-primary.dark-skin .sidebar-menu > li.active.treeview > a {
-  background: linear-gradient(45deg, #0F5EF7, #7a15f7);
   color: #ffffff !important;
-  -webkit-box-shadow: 0px 0px 12px 0px rgba(15, 94, 247, 0.35);
-  box-shadow: 0px 0px 12px 0px rgba(15, 94, 247, 0.35); }
+  -webkit-box-shadow: 3px 0px 0px 0px rgba(15, 94, 247, 0.35);
+  box-shadow: 3px 0px 0px 0px rgba(15, 94, 247, 0.35); }
   .theme-primary.dark-skin .sidebar-menu > li.active.treeview > a > i {
     color: #0F5EF7; }
   .theme-primary.dark-skin .sidebar-menu > li.active.treeview > a > svg {
@@ -442,8 +437,7 @@ Theme Primary Color
   .theme-primary.dark-skin .sidebar-menu > li.active.treeview > a:after {
     border-color: transparent #333333 transparent transparent !important; }
 .theme-primary.dark-skin .sidebar-menu > li.active.treeview.treeview > a {
-  background: linear-gradient(45deg, #0F5EF7, #7a15f7);
-  color: #ffffff !important; }
+  background: transparent;color: #000!important; }
   .theme-primary.dark-skin .sidebar-menu > li.active.treeview.treeview > a > i {
     color: #ffffff; }
   .theme-primary.dark-skin .sidebar-menu > li.active.treeview.treeview > a > svg {
@@ -453,10 +447,9 @@ Theme Primary Color
 .theme-primary.dark-skin .sidebar-menu > li.active.treeview.treeview .treeview-menu li a {
   color: #8a99b5; }
 .theme-primary.light-skin .sidebar-menu > li.active {
-  background: linear-gradient(45deg, #0F5EF7, #7a15f7);
-  color: white;
-  -webkit-box-shadow: 0px 0px 12px 0px rgba(15, 94, 247, 0.35);
-  box-shadow: 0px 0px 12px 0px rgba(15, 94, 247, 0.35); }
+  background: transparent;color: #000!important;
+  -webkit-box-shadow: 3px 0px 0px 0px rgba(15, 94, 247, 0.35);
+  box-shadow: 3px 0px 0px 0px rgba(15, 94, 247, 0.35); }
   .theme-primary.light-skin .sidebar-menu > li.active a {
     color: white;
     background-color: transparent; }
@@ -474,31 +467,31 @@ Theme Primary Color
     -webkit-box-shadow: none;
     box-shadow: none; }
 .theme-primary.dark-skin .sidebar-menu > li.active {
-  background: linear-gradient(45deg, #0F5EF7, #7a15f7);
-  color: white;
-  -webkit-box-shadow: 0px 0px 12px 0px rgba(15, 94, 247, 0.35);
-  box-shadow: 0px 0px 12px 0px rgba(15, 94, 247, 0.35); }
+  background: transparent;color: #000!important;
+  -webkit-box-shadow: 3px 0px 0px 0px rgba(15, 94, 247, 0.35);
+  box-shadow: 3px 0px 0px 0px rgba(15, 94, 247, 0.35); }
   .theme-primary.dark-skin .sidebar-menu > li.active a {
-    color: white;
-    background-color: transparent; }
+    color: black;
+    background-color: transparent;
+    font-weight: bold; }
     .theme-primary.dark-skin .sidebar-menu > li.active a > i {
       color: #0f5ef7; }
     .theme-primary.dark-skin .sidebar-menu > li.active a > svg {
-      color: white; }
+      color: #000;
+      font-weight: bold; }
   .theme-primary.dark-skin .sidebar-menu > li.active .treeview-menu li.active {
     background-color: rgba(15, 94, 247, 0);
     color: #0f5ef7; }
     .theme-primary.dark-skin .sidebar-menu > li.active .treeview-menu li.active a {
-      color: white !important; }
+      background: transparent;color: #000!important; }
       .theme-primary.dark-skin .sidebar-menu > li.active .treeview-menu li.active a > i {
-        color: white; }
+        color: #333333; }
   .theme-primary.dark-skin .sidebar-menu > li.active.menu-open {
     background: transparent;
     -webkit-box-shadow: none;
     box-shadow: none; }
 .theme-primary.dark-skin.sidebar-mini.sidebar-collapse .sidebar-menu > li.active > a > span {
-  background: linear-gradient(45deg, #0F5EF7, #7a15f7) !important;
-  color: #ffffff !important; }
+  background: transparent;color: #000!important; }
 
 @media (min-width: 768px) {
   .sidebar-mini.sidebar-collapse .sidebar-menu > li.active.menu-open {

@@ -1,36 +1,53 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.master_home')
+@section('home_content')
+@section('title')
+    {{ trans('site.forget-password') }}
+@endsection
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-        </div>
+<!-- Page Title
+============================================= -->
+<section id="page-title" style="background-color: #752651;">
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+    <div class="container clearfix">
+        <h1 class="text-white">إعادة تعيين كلمة المرور</h1>
+        <ol class="breadcrumb">
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        </ol>
+    </div>
 
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
+</section><!-- #page-title end -->
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+<div class="body-content">
+    <div class="container">
+        <div class="sign-in-page">
+            <div class="row">
+                <!-- Sign-in -->
+                <div class="col-md-6 col-sm-6 sign-in mt-5">
+                    <h4 class="">{{ trans('site.reset-password') }}</h4>
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
+                    <form method="POST" action="{{ route('password.email') }}">
+                        @csrf
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+                        <div class="form-group">
+                            <label class="info-title" for="exampleInputEmail1">{{ trans('site.email') }}
+                                <span>*</span></label>
+                            <input type="email" id="email" name="email"
+                                class="form-control unicase-form-control text-input">
+                        </div>
+
+
+                        <button type="submit"
+                            class="btn-upper btn btn-primary checkout-page-button">{{ trans('site.reset-password') }}</button>
+                    </form>
+
+
+                </div>
+                <!-- Sign-in -->
+
+                <!-- create a new account -->
+            </div><!-- /.row -->
+        </div><!-- /.sigin-in-->
+      
+    </div><!-- /.container -->
+</div><!-- /.body-content -->
+@endsection
