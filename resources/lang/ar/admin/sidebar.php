@@ -38,11 +38,7 @@ return [
     'brands' => 'الماركات',
     'category' => 'القسم',
     'all-categories' => 'الأقسام',
-<<<<<<< HEAD
     'all-subcategories' => 'الأقسام الفرعية',
-=======
-    'all-subcategories' => 'الأقسام الفرعية',
->>>>>>> sample
     'products' => 'المنتجات',
     'add-products' => 'إضافة منتجات',
     'products-management' => 'إدارة المنتجات',
