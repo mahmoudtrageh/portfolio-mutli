@@ -20,6 +20,19 @@ class ContactsController extends Controller
 
 
     public function ContactForm(Request $request){
+
+        $request->validate([
+			'name' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+		], [
+			'name.required' => trans('admin/controllers.this-field-required'),
+            'email.required' => trans('admin/controllers.this-field-required'),
+            'subject.required' => trans('admin/controllers.this-field-required'),
+            'message.required' => trans('admin/controllers.this-field-required'),
+		]);
+
         ContactForm::insert([
             'name' => $request->name,
             'email' => $request->email,
@@ -28,7 +41,12 @@ class ContactsController extends Controller
             'created_at' => Carbon::now()
         ]);
     
-        return Redirect()->route('home')->with('success','تم إرسال رسالتك بنجاح');
+        $notification = array(
+            'message' => trans('site/controllers.message-send-success'),
+            'alert-type' => 'success'
+        );   
+
+        return Redirect()->route('home')->with($notification);
 
     }
 

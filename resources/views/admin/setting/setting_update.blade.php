@@ -1,4 +1,7 @@
 @extends('admin.admin_master')
+@section('title')
+    {{ trans('admin/sidebar.dashboard') }} | {{ trans('admin/sidebar.site-settings') }}
+@endsection
 @section('admin')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -9,7 +12,7 @@
             <!-- Basic Forms -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h4 class="box-title">{{ trans('admin.site-setting-page') }} </h4>
+                    <h4 class="box-title">{{ trans('admin/sidebar.site-settings') }} </h4>
 
                 </div>
                 <!-- /.box-header -->
@@ -27,7 +30,7 @@
                                             <div class="col-md-6">
 
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.site-logo') }} <span class="text-danger">
+                                                    <h5>{{ trans('admin/dashboard.site-logo') }} <span class="text-danger">
                                                         </span>
                                                     </h5>
                                                     <div class="controls">
@@ -42,7 +45,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.site-favicon') }} <span class="text-danger">
+                                                    <h5>{{ trans('admin/dashboard.site-favicon') }} <span class="text-danger">
                                                         </span>
                                                     </h5>
                                                     <div class="controls">
@@ -57,7 +60,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.phone-one') }} <span
+                                                    <h5>{{ trans('admin/dashboard.phone-one') }} <span
                                                             class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
@@ -67,7 +70,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.phone-two') }} <span
+                                                    <h5>{{ trans('admin/dashboard.phone-two') }} <span
                                                             class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
@@ -77,7 +80,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.email') }} <span class="text-danger">*</span>
+                                                    <h5>{{ trans('admin/dashboard.email') }} <span class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
                                                         <input type="email" name="email" class="form-control"
@@ -86,7 +89,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.name') }} <span class="text-danger">*</span>
+                                                    <h5>{{ trans('admin/dashboard.name') }} <span class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
                                                         <input type="text" name="site_name" class="form-control"
@@ -94,9 +97,8 @@
                                                     </div>
                                                 </div>
 
-
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.address') }} <span
+                                                    <h5>{{ trans('admin/dashboard.address') }} <span
                                                             class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
@@ -107,7 +109,7 @@
 
 
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.facebook') }} <span
+                                                    <h5>{{ trans('admin/dashboard.facebook') }} <span
                                                             class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
@@ -118,7 +120,7 @@
 
 
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.twitter') }} <span
+                                                    <h5>{{ trans('admin/dashboard.twitter') }} <span
                                                             class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
@@ -128,7 +130,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.linkedin') }} <span
+                                                    <h5>{{ trans('admin/dashboard.linkedin') }} <span
                                                             class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
@@ -138,7 +140,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.youtube') }} <span
+                                                    <h5>{{ trans('admin/dashboard.youtube') }} <span
                                                             class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
@@ -148,7 +150,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.instagram') }} <span
+                                                    <h5>{{ trans('admin/dashboard.instagram') }} <span
                                                             class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="instagram" class="form-control"
@@ -157,7 +159,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.github') }} <span class="text-danger">*</span>
+                                                    <h5>Github <span class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
                                                         <input type="text" name="github" class="form-control"
@@ -169,13 +171,12 @@
 
                                         </div> <!-- end row 	 -->
 
-
-
-
                                         <div class="text-xs-right">
                                             <input type="submit" class="btn btn-rounded btn-primary mb-5"
-                                                value="{{ trans('admin.update') }}">
+                                                value="{{ trans('admin/dashboard.update') }}">
                                         </div>
+                                    </div>
+                                </div>
                             </form>
 
                         </div>
@@ -188,8 +189,6 @@
             <!-- /.box -->
 
         </section>
-
-
 
     </div>
 @endsection

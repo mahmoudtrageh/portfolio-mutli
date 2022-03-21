@@ -28,11 +28,13 @@
 
     <link rel="icon" href="{{ asset($settings->favicon) }}" type="image/gif" sizes="16x16">
 
+    <title>
+        {{ trans('admin/sidebar.dashboard') }} | {{ trans('admin/dashboard.login') }}
+    </title>
 </head>
 
 <body class="stretched">
 
-    @include('errors.errors')
     <!-- Content
   ============================================= -->
     <section id="content">
@@ -54,24 +56,27 @@
                                 <form id="login-form" name="login-form" class="mb-0" method="POST"
                                     action="{{ route('admin.login') }}">
                                     @csrf
-                                    <h3>تسجيل الدخول إلى لوحة التحكم</h3>
+                                    <h3>{{ trans('admin/dashboard.login-admin-dashboard') }}</h3>
 
                                     <div class="row">
                                         <div class="col-12 form-group">
-                                            <label for="login-form-username">البريد الإلكتروني</label>
+                                            <label
+                                                for="login-form-username">{{ trans('admin/dashboard.email') }}</label>
                                             <input type="text" id="login-form-username" name="email" value=""
                                                 class="form-control not-dark" />
                                         </div>
 
                                         <div class="col-12 form-group">
-                                            <label for="login-form-password">كلمة المرور</label>
+                                            <label
+                                                for="login-form-password">{{ trans('admin/dashboard.password') }}</label>
                                             <input type="password" id="login-form-password" name="password" value=""
                                                 class="form-control not-dark" />
                                         </div>
 
                                         <div class="col-12 form-group mb-0">
-                                            <button class="button button-3d button-black my-3 d-block" id="login-form-submit"
-                                                name="login-form-submit" value="login">تسجيل الدخول</button>
+                                            <button class="button button-3d button-black my-3 d-block"
+                                                id="login-form-submit" name="login-form-submit"
+                                                value="login">{{ trans('admin/dashboard.login') }}</button>
                                         </div>
                                     </div>
                                 </form>
@@ -79,7 +84,8 @@
                             </div>
                         </div>
 
-                        <div class="text-center text-muted mt-3"><small>&copy; جميع الحقوق محفوظة
+                        <div class="text-center text-muted mt-3"><small>&copy;
+                                {{ trans('admin/dashboard.copyright') }}
                             </small></div>
 
                     </div>
@@ -88,7 +94,6 @@
 
         </div>
     </section><!-- #content end -->
-
 
     <script src="{{ asset('home/assets/js/jquery.js') }}"></script>
     <script src="{{ asset('home/assets/js/plugins.min.js') }}"></script>
@@ -102,16 +107,31 @@
     <script src="{{ asset('home/assets/js/functions.js') }}"></script>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
     <script>
-
-        setTimeout(fade_out, 5000);
-      
-        function fade_out() {
-            $("#checker").fadeOut().empty();
-        }
-      
-      </script>
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+            switch(type){
+            case 'info':
+            toastr.info(" {{ Session::get('message') }} ");
+            break;
+        
+            case 'success':
+            toastr.success(" {{ Session::get('message') }} ");
+            break;
+        
+            case 'warning':
+            toastr.warning(" {{ Session::get('message') }} ");
+            break;
+        
+            case 'error':
+            toastr.error(" {{ Session::get('message') }} ");
+            break;
+            }
+        @endif
+    </script>
 </body>
 
 </html>

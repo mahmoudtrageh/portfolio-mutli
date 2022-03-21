@@ -31,13 +31,9 @@ class CheckoutController extends Controller
     		return 'card';
     	}else{
             return view('payment.cash',compact('data','cartTotal'));
-    	}
-    	
-    	 
+    	} 
 
     }// end mehtod. 
-
-
 
 }
  

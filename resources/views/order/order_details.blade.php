@@ -1,5 +1,7 @@
 @extends('layouts.master_home')
-
+@section('title')
+    {{ trans('site/body.order-details') }}
+@endsection
 @section('home_content')
     <!-- Content
               ============================================= -->
@@ -12,48 +14,47 @@
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-header">
-                            <h4>{{ trans('site.shipping-details') }}</h4>
+                            <h4>{{ trans('site/body.shipping-details') }}</h4>
                         </div>
                         <hr>
                         <div class="card-body" style="background: #E9EBEC;">
                             <table class="table">
                                 <tr>
-                                    <th> {{ trans('site.shipping-name') }} : </th>
+                                    <th> {{ trans('site/body.name') }} : </th>
                                     <th> {{ $order->name }} </th>
                                 </tr>
     
                                 <tr>
-                                    <th> {{ trans('site.shipping-phone') }} : </th>
+                                    <th> {{ trans('site/layout.phone') }} : </th>
                                     <th> {{ $order->phone }} </th>
                                 </tr>
     
                                 <tr>
-                                    <th> {{ trans('site.shipping-email') }} : </th>
+                                    <th> {{ trans('site/layout.email') }} : </th>
                                     <th> {{ $order->email }} </th>
                                 </tr>
     
                                 <tr>
-                                    <th> {{ trans('site.division') }} : </th>
+                                    <th> {{ trans('site/body.province') }} : </th>
                                     <th> {{ $order->provinces->name }} </th>
                                 </tr>
 
                                 <tr>
-                                    <th> العنوان : </th>
+                                    <th> {{ trans('site/body.address') }} : </th>
                                     <th> {{ $order->address }} </th>
                                 </tr>
                               
                                 <tr>
-                                    <th>{{ trans('site.post-code') }} : </th>
+                                    <th>{{ trans('site/body.postal-code') }} : </th>
                                     <th> {{ $order->post_code }} </th>
                                 </tr>
     
                                 <tr>
-                                    <th> {{ trans('site.order-date') }} : </th>
+                                    <th> {{ trans('site/body.date') }} : </th>
                                     <th> {{ $order->order_date }} </th>
                                 </tr>
     
                             </table>
-    
     
                         </div>
     
@@ -61,13 +62,11 @@
     
                 </div> <!-- // end col md -5 -->
     
-    
-    
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-header">
                             <h4>{{ trans('site.order-details') }}
-                                <span class="text-danger"> {{ trans('site.invoice') }} :
+                                <span class="text-danger"> {{ trans('site/body.invoice') }} :
                                     {{ $order->invoice_no }}</span>
                             </h4>
                         </div>
@@ -75,17 +74,17 @@
                         <div class="card-body" style="background: #E9EBEC;">
                             <table class="table">
                                 <tr>
-                                    <th> {{ trans('site.name') }} : </th>
+                                    <th> {{ trans('site/body.name') }} : </th>
                                     <th> {{ $order->user->name }} </th>
                                 </tr>
     
                                 <tr>
-                                    <th> {{ trans('site.phone') }} : </th>
+                                    <th> {{ trans('site/layout.phone') }} : </th>
                                     <th> {{ $order->user->phone }} </th>
                                 </tr>
     
                                 <tr>
-                                    <th> {{ trans('site.payment-method') }} : </th>
+                                    <th> {{ trans('site/body.payment-method') }} : </th>
                                     <th> {{ $order->payment_method }} </th>
                                 </tr>
     
@@ -95,27 +94,24 @@
                                 </tr>
     
                                 <tr>
-                                    <th> {{ trans('site.invoice-number') }} : </th>
+                                    <th> {{ trans('site/layout.invoice-number') }} : </th>
                                     <th class="text-danger"> {{ $order->invoice_no }} </th>
                                 </tr>
     
                                 <tr>
-                                    <th> {{ trans('site.total') }} : </th>
+                                    <th> {{ trans('site/body.total') }} : </th>
                                     <th>{{ $order->amount }} </th>
                                 </tr>
     
                                 <tr>
-                                    <th> {{ trans('site.order') }} : </th>
+                                    <th> {{ trans('site/body.order') }} : </th>
                                     <th>
                                         <span class="badge badge-pill badge-warning"
                                             style="background: #418DB9;">{{ $order->status }} </span>
                                     </th>
                                 </tr>
     
-    
-    
                             </table>
-    
     
                         </div>
     
@@ -133,27 +129,26 @@
     
                                     <tr style="background: #e2e2e2;">
                                         <td class="col-md-1">
-                                            <label for=""> {{ trans('site.image') }}</label>
+                                            <label for=""> {{ trans('site/body.image') }}</label>
                                         </td>
     
                                         <td class="col-md-3">
-                                            <label for=""> {{ trans('site.product-name') }} </label>
+                                            <label for=""> {{ trans('site/body.name') }} </label>
                                         </td>
     
                                         <td class="col-md-3">
-                                            <label for=""> {{ trans('site.product-code') }}</label>
+                                            <label for=""> {{ trans('site/body.product-code') }}</label>
                                         </td>
     
                                         <td class="col-md-1">
-                                            <label for=""> {{ trans('site.quantity') }} </label>
+                                            <label for=""> {{ trans('site/body.qty') }} </label>
                                         </td>
     
                                         <td class="col-md-1">
-                                            <label for=""> {{ trans('site.price') }} </label>
+                                            <label for=""> {{ trans('site/body.price') }} </label>
                                         </td>
     
                                     </tr>
-    
     
                                     @foreach ($orderItem as $item)
                                         <tr>
@@ -184,10 +179,6 @@
                                         </tr>
                                     @endforeach
     
-    
-    
-    
-    
                                 </tbody>
     
                             </table>
@@ -199,37 +190,7 @@
     
                 </div> <!-- // END ORDER ITEM ROW -->
     
-                @if ($order->status !== 'delivered')
-                @else
-                    @php
-                        $order = App\Models\Order::where('id', $order->id)
-                            ->where('return_reason', '=', null)
-                            ->first();
-                    @endphp
-    
-    
-                    @if ($order)
-                        <form action="{{ route('return.order', $order->id) }}" method="post">
-                            @csrf
-    
-                            <div class="form-group">
-                                <label for="label"> {{ trans('site.order-return-reason') }}:</label>
-                                <textarea name="return_reason" id="" class="form-control" cols="30"
-                                    rows="05">{{ trans('site.return-reason') }}</textarea>
-                            </div>
-    
-                            <button type="submit" class="btn btn-danger">{{ trans('site.order-return') }}</button>
-    
-                        </form>
-                    @else
-                        <span class="badge badge-pill badge-warning"
-                            style="background: red">{{ trans('site.sent-return-for-this-product') }}</span>
-                    @endif
-                @endif
                 <br><br>
-    
-    
-    
     
             </div> <!-- // end row -->
 

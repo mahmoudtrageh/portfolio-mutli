@@ -40,7 +40,7 @@ class CartPageController extends Controller
            Session::forget('coupon');
         }
 
-        return response()->json(['success' => trans('site.success-remove-cart')]);
+        return response()->json(['error' => trans('site/controllers.product-remove-from-cart')]);
     }
 
 
@@ -90,8 +90,6 @@ class CartPageController extends Controller
         return response()->json('Decrement');
 
     }// end mehtod 
-
-
 
 } 
 

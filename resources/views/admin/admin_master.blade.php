@@ -1,140 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
     @php
-    $settings = DB::table('settings')->first();
-  @endphp
-    <link rel="icon" href="{{asset($settings->favicon)}}">
-  
-  
-    <title>{{trans('admin.site-name')}} - {{trans('admin.dashboard')}}</title>
+        $settings = DB::table('settings')->first();
+    @endphp
+    <link rel="icon" href="{{ asset($settings->favicon) }}">
+
+
+    <title>@yield('title')</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300&display=swap" rel="stylesheet">
 
-	<!-- Vendors Style-->
-	<link rel="stylesheet" href="{{ asset('backend/css/vendors_css.css') }}">
-	  
-	<!-- Style-->  
-	<link rel="stylesheet" href="{{ asset('backend/css/style-rtl.css') }}">
+    <!-- Vendors Style-->
+    <link rel="stylesheet" href="{{ asset('backend/css/vendors_css.css') }}">
 
-	<link rel="stylesheet" href="{{ asset('backend/css/skin_color.css') }}">
+    <!-- Style-->
+    @if (session()->get('lang') == 'ar')
+        <link rel="stylesheet" href="{{ asset('backend/css/style-rtl.css') }}">
+        <style>
+            .add-admin, .add-post {
+                float: left;
+            }
+        </style>
+    @else
+        <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
+        <style>
+            .add-admin, .add-post {
+                float: right;
+            }
+        </style>
+    @endif
 
-   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+    <link rel="stylesheet" href="{{ asset('backend/css/skin_color.css') }}">
 
-   <style>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
-     .user-menu .dropdown-menu {
-      text-align: right;
-     }
-     .content-header .page-title {
-      margin: 0 15px 0 15px;
-      padding: 7px 25px 7px 25px;
-     }
-     </style>
-  
-  </head>  
+    @if (session()->get('lang') == 'ar')
+        <style>
+            .user-menu .dropdown-menu {
+                text-align: right;
+            }
+
+            .content-header .page-title {
+                margin: 0 15px 0 15px;
+                padding: 7px 25px 7px 25px;
+            }
+
+        </style>
+    @endif
+
+    @if (session()->get('lang') == 'en')
+        <style>
+            .fa-angle-left:before {
+                content: "\f105";
+            }
+
+            .sidebar-menu .fa-angle-left {
+                float: right;
+            }
+
+            .dark-skin .main-sidebar {
+                background-color: #fff !important;
+            }
+
+        </style>
+    @endif
+
+</head>
 
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
-	
-<div class="wrapper">
 
-  @include('admin.body.header')
-  
-  @include('admin.body.sidebar')
+    <div class="wrapper">
+
+        @include('admin.body.sidebar')
 
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-	  
-    @include('errors.errors')
-    @yield('admin')
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            @include('admin.body.header')
+
+            @yield('admin')
 
 
-
-
-  </div>
-  <!-- /.content-wrapper -->
- @include('admin.body.footer')
-
-   
-  
-  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
-  
-</div>
-<!-- ./wrapper -->
-  	
-	<!-- Vendor JS -->
-
-	<script src="{{ asset('backend/js/vendors.min.js') }}"></script>
-    <script src="{{ asset('../assets/icons/feather-icons/feather.min.js') }}"></script>	
-	{{-- <script src="{{ asset('../assets/vendor_components/easypiechart/dist/jquery.easypiechart.js') }}"></script> --}}
-	{{-- <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/irregular-data-series.js') }}"></script> --}}
-	{{-- <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script> --}}
-
-  <script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js') }}"></script>
-  <script src="{{ asset('backend/js/pages/data-table.js') }}"></script>
-
-
-<!-- /// Tgas Input Script -->
-  <script src="{{ asset('../assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js') }}"></script>
-
- <!-- // CK EDITOR  --> 
-  <script src="{{ asset('../assets/vendor_components/ckeditor/ckeditor.js') }}"></script>
-  <script src="{{ asset('../assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js') }}"></script>
-  <script src="{{ asset('backend/js/pages/editor.js') }}"></script>
-
- 
-	<!-- Sunny Admin App -->
-	<script src="{{ asset('backend/js/template.js') }}"></script>
-	<script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>
+        </div>
+        <!-- /.content-wrapper -->
+        @include('admin.body.footer')
 
 
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  
+        <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
 
-<script>
- @if(Session::has('message'))
- var type = "{{ Session::get('alert-type','info') }}"
- switch(type){
-    case 'info':
-    toastr.info(" {{ Session::get('message') }} ");
-    break;
+    </div>
+    <!-- ./wrapper -->
 
-    case 'success':
-    toastr.success(" {{ Session::get('message') }} ");
-    break;
+    <!-- Vendor JS -->
 
-    case 'warning':
-    toastr.warning(" {{ Session::get('message') }} ");
-    break;
+    <script src="{{ asset('backend/js/vendors.min.js') }}"></script>
+    <script src="{{ asset('../assets/icons/feather-icons/feather.min.js') }}"></script>
+    {{-- <script src="{{ asset('../assets/vendor_components/easypiechart/dist/jquery.easypiechart.js') }}"></script> --}}
+    {{-- <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/irregular-data-series.js') }}"></script> --}}
+    {{-- <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script> --}}
 
-    case 'error':
-    toastr.error(" {{ Session::get('message') }} ");
-    break; 
- }
- @endif 
-</script>
+    <script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js') }}"></script>
+    <script src="{{ asset('backend/js/pages/data-table.js') }}"></script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- /// Tgas Input Script -->
+    <script src="{{ asset('../assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js') }}"></script>
 
- <script src="{{ asset('backend/js/code.js') }}"></script>
-	
- <script>
+    <!-- // CK EDITOR  -->
+    <script src="{{ asset('../assets/vendor_components/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('../assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js') }}"></script>
+    <script src="{{ asset('backend/js/pages/editor.js') }}"></script>
 
-  setTimeout(fade_out, 5000);
 
-  function fade_out() {
-      $("#checker").fadeOut().empty();
-  }
+    <!-- Sunny Admin App -->
+    <script src="{{ asset('backend/js/template.js') }}"></script>
+    <script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>
 
-</script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+            switch(type){
+            case 'info':
+            toastr.info(" {{ Session::get('message') }} ");
+            break;
+        
+            case 'success':
+            toastr.success(" {{ Session::get('message') }} ");
+            break;
+        
+            case 'warning':
+            toastr.warning(" {{ Session::get('message') }} ");
+            break;
+        
+            case 'error':
+            toastr.error(" {{ Session::get('message') }} ");
+            break;
+            }
+        @endif
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script src="{{ asset('backend/js/code.js') }}"></script>
 
 </body>
+
 </html>

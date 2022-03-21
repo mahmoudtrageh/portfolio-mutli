@@ -11,10 +11,10 @@ use App\Models\OrderItem;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon; 
+use App\Models\Gateway;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderMail;
-use App\Mail\OrderMailEn;
 class StripeController extends Controller
 {
     public function StripeOrder(Request $request){
@@ -25,7 +25,8 @@ class StripeController extends Controller
     		$total_amount = round(Cart::total());
     	}
  
-	\Stripe\Stripe::setApiKey('sk_test_UunisdCPG8QupbZfvYHF9da3');
+	$gateway = Gateway::first();
+	\Stripe\Stripe::setApiKey($gateway->stripe_secret);
 
 	 
 	$token = $_POST['stripeToken'];
@@ -100,7 +101,7 @@ class StripeController extends Controller
      Cart::destroy();
 
      $notification = array(
-			'message' => trans('site.your-order-place-success'),
+			'message' => trans('site/controllers.your-order-place-success'),
 			'alert-type' => 'success'
 		);
 

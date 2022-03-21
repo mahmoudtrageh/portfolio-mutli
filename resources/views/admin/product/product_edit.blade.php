@@ -1,11 +1,12 @@
 @extends('admin.admin_master')
+@section('title')
+    {{ trans('admin/sidebar.dashboard') }} | {{ trans('admin/dashboard.edit-product') }}
+@endsection
 @section('admin')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-
     <div class="container-full">
         <!-- Content Header (Page header) -->
-
 
         <!-- Main content -->
         <section class="content">
@@ -13,7 +14,7 @@
             <!-- Basic Forms -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h4 class="box-title">{{ trans('admin.edit-product') }} </h4>
+                    <h4 class="box-title">{{ trans('admin/dashboard.edit-product') }} </h4>
 
                 </div>
                 <!-- /.box-header -->
@@ -24,172 +25,166 @@
                             <form method="post" action="{{ route('product-update') }}">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $products->id }}">
-                                
 
-                                        <div class="row">
-                                            <!-- start 1st row  -->
-                                           
-                                            <div class="col-md-6">
+                                <div class="row">
+                                    <!-- start 1st row  -->
 
-                                                <div class="form-group">
-                                                    <h5>{{ trans('admin.category-select') }} <span
-                                                            class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <select name="category_id" class="form-control" required="">
-                                                            <option value="" selected="" disabled="">
-                                                                {{ trans('admin.select-category') }}</option>
-                                                            @foreach ($categories as $category)
-                                                                <option value="{{ $category->id }}"
-                                                                    {{ $category->id == $products->category_id ? 'selected' : '' }}>
-                                                                        {{ $category->category_name }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                        @error('category_id')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
+                                    <div class="col-md-6">
 
-                                            </div> <!-- end col md 4 -->
+                                        <div class="form-group">
+                                            <h5>{{ trans('admin/dashboard.category-select') }} <span class="text-danger">*</span>
+                                            </h5>
+                                            <div class="controls">
+                                                <select name="category_id" class="form-control" required="">
+                                                    <option value="" selected="" disabled="">
+                                                        {{ trans('admin/dashboard.select-category') }}</option>
+                                                    @foreach ($categories as $category)
+                                                        <option value="{{ $category->id }}"
+                                                            {{ $category->id == $products->category_id ? 'selected' : '' }}>
+                                                            {{ $category->category_name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                @error('category_id')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
 
-											<div class="col-md-6">
+                                    </div> <!-- end col md 4 -->
 
-                                                <div class="form-group">
-                                                    <h5>{{ trans('admin.product-name') }} <span
-                                                            class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <input type="text" name="product_name" class="form-control"
-                                                            required="" value="{{ $products->product_name }}">
-                                                        @error('product_name')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
+                                    <div class="col-md-6">
 
-                                            </div> <!-- end col md 4 -->
+                                        <div class="form-group">
+                                            <h5>{{ trans('admin/dashboard.product') }} <span class="text-danger">*</span>
+                                            </h5>
+                                            <div class="controls">
+                                                <input type="text" name="product_name" class="form-control" required=""
+                                                    value="{{ $products->product_name }}">
+                                                @error('product_name')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
 
-                                        </div> <!-- end 1st row  -->
+                                    </div> <!-- end col md 4 -->
 
-                                        <div class="row">
-                                            <!-- start 3RD row  -->
-                                            <div class="col-md-6">
+                                </div> <!-- end 1st row  -->
 
-                                                <div class="form-group">
-                                                    <h5>{{ trans('admin.product-code') }} <span
-                                                            class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <input type="text" name="product_code" class="form-control"
-                                                            required="" value="{{ $products->product_code }}">
-                                                        @error('product_code')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
+                                <div class="row">
+                                    <!-- start 3RD row  -->
+                                    <div class="col-md-6">
 
-                                            </div> <!-- end col md 4 -->
+                                        <div class="form-group">
+                                            <h5>{{ trans('admin/dashboard.product-code') }} <span class="text-danger">*</span>
+                                            </h5>
+                                            <div class="controls">
+                                                <input type="text" name="product_code" class="form-control" required=""
+                                                    value="{{ $products->product_code }}">
+                                                @error('product_code')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
 
-                                            <div class="col-md-6">
+                                    </div> <!-- end col md 4 -->
 
-                                                <div class="form-group">
-                                                    <h5>{{ trans('admin.product-quantity') }} <span
-                                                            class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <input type="text" name="product_qty" class="form-control"
-                                                            required="" value="{{ $products->product_qty }}">
-                                                        @error('product_qty')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
+                                    <div class="col-md-6">
 
-                                            </div> <!-- end col md 4 -->
+                                        <div class="form-group">
+                                            <h5>{{ trans('admin/dashboard.qty') }} <span
+                                                    class="text-danger">*</span></h5>
+                                            <div class="controls">
+                                                <input type="text" name="product_qty" class="form-control" required=""
+                                                    value="{{ $products->product_qty }}">
+                                                @error('product_qty')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
 
-                                        </div> <!-- end 3RD row  -->
+                                    </div> <!-- end col md 4 -->
 
-                                        <div class="row">
-                                            <!-- start 6th row  -->
+                                </div> <!-- end 3RD row  -->
 
-                                            <div class="col-md-6">
+                                <div class="row">
+                                    <!-- start 6th row  -->
 
-                                                <div class="form-group">
-                                                    <h5>{{ trans('admin.product-selling-price') }} <span
-                                                            class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <input type="text" name="selling_price" class="form-control"
-                                                            required="" value="{{ $products->selling_price }}">
-                                                        @error('selling_price')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
+                                    <div class="col-md-6">
 
+                                        <div class="form-group">
+                                            <h5>{{ trans('admin/dashboard.selling-price') }} <span
+                                                    class="text-danger">*</span></h5>
+                                            <div class="controls">
+                                                <input type="text" name="selling_price" class="form-control" required=""
+                                                    value="{{ $products->selling_price }}">
+                                                @error('selling_price')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
 
-                                            </div> <!-- end col md 6 -->
+                                    </div> <!-- end col md 6 -->
 
+                                    <div class="col-md-6">
 
-                                            <div class="col-md-6">
+                                        <div class="form-group">
+                                            <h5>{{ trans('admin/dashboard.discount-price') }} <span
+                                                    class="text-danger">*</span></h5>
+                                            <div class="controls">
+                                                <input type="text" name="discount_price" class="form-control"
+                                                    value="{{ $products->discount_price }}">
+                                                @error('discount_price')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
 
-                                                <div class="form-group">
-                                                    <h5>{{ trans('admin.product-discount-price') }} <span
-                                                            class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <input type="text" name="discount_price" class="form-control"
-                                                            value="{{ $products->discount_price }}">
-                                                        @error('discount_price')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
+                                    </div> <!-- end col md 6 -->
 
-                                            </div> <!-- end col md 6 -->
+                                </div> <!-- end 6th row  -->
 
-                                        </div> <!-- end 6th row  -->
+                                <div class="row">
+                                    <!-- start 7th row  -->
+                                    <div class="col-md-6">
 
-                                        <div class="row">
-                                            <!-- start 7th row  -->
-                                            <div class="col-md-6">
-
-                                                <div class="form-group">
-                                                    <h5>{{ trans('admin.short-desc') }} <span
-                                                            class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <textarea name="short_desc" id="textarea"
-                                                            class="form-control" required placeholder="Textarea text">
+                                        <div class="form-group">
+                                            <h5>{{ trans('admin/dashboard.short-desc') }} <span class="text-danger">*</span>
+                                            </h5>
+                                            <div class="controls">
+                                                <textarea name="short_desc" id="textarea" class="form-control" required placeholder="Textarea text">
 														{!! $products->short_desc !!}
 														</textarea>
-                                                    </div>
-                                                </div>
+                                            </div>
+                                        </div>
 
-                                            </div> <!-- end col md 6 -->
+                                    </div> <!-- end col md 6 -->
 
-                                        </div> <!-- end 7th row  -->
+                                </div> <!-- end 7th row  -->
 
-                                        <div class="row">
-                                            <!-- start 8th row  -->
-                                            <div class="col-md-6">
+                                <div class="row">
+                                    <!-- start 8th row  -->
+                                    <div class="col-md-6">
 
-                                                <div class="form-group">
-                                                    <h5>{{ trans('admin.long-desc') }} <span
-                                                            class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <textarea id="editor1" name="long_desc" rows="10" cols="80"
-                                                            required="">
+                                        <div class="form-group">
+                                            <h5>{{ trans('admin/dashboard.long-desc') }} <span class="text-danger">*</span></h5>
+                                            <div class="controls">
+                                                <textarea id="editor1" name="long_desc" rows="10" cols="80" required="">
 																{!! $products->long_desc !!}
 														</textarea>
-                                                    </div>
-                                                </div>
-
-                                            </div> <!-- end col md 6 -->
-
-                                        </div> <!-- end 8th row  -->
-
-                                        <hr>
-
-                                        <div class="text-xs-right">
-                                            <input type="submit" class="btn btn-rounded btn-primary mb-5"
-                                                value="{{ trans('admin.update') }}">
+                                            </div>
                                         </div>
+
+                                    </div> <!-- end col md 6 -->
+
+                                </div> <!-- end 8th row  -->
+
+                                <hr>
+
+                                <div class="text-xs-right">
+                                    <input type="submit" class="btn btn-rounded btn-primary mb-5"
+                                        value="{{ trans('admin/dashboard.update') }}">
+                                </div>
                             </form>
 
                         </div>
@@ -204,7 +199,6 @@
         </section>
         <!-- /.content -->
 
-
         <!-- ///////////////// Start Multiple Image Update Area ///////// -->
 
         <section class="content">
@@ -213,10 +207,10 @@
                 <div class="col-md-12">
                     <div class="box bt-3 border-info">
                         <div class="box-header">
-                            <h4 class="box-title">{{ trans('admin.multi-image') }}
-                                <strong>{{ trans('admin.update') }}</strong></h4>
+                            <h4 class="box-title">{{ trans('admin/dashboard.product-images') }}
+                                <strong>{{ trans('admin/dashboard.update') }}</strong>
+                            </h4>
                         </div>
-
 
                         <form method="post" action="{{ route('update-product-image') }}" enctype="multipart/form-data">
                             @csrf
@@ -235,7 +229,7 @@
                                                 </h5>
                                                 <p class="card-text">
                                                 <div class="form-group">
-                                                    <label class="form-control-label">{{ trans('admin.change-image') }}
+                                                    <label class="form-control-label">{{ trans('admin/dashboard.change-image') }}
                                                         <span class="tx-danger">*</span></label>
                                                     <input class="form-control" type="file"
                                                         name="multi_img[{{ $img->id }}]">
@@ -252,29 +246,19 @@
 
                             <div class="text-xs-right">
                                 <input type="submit" class="btn btn-rounded btn-primary mb-5"
-                                    value="{{ trans('admin.update') }}">
+                                    value="{{ trans('admin/dashboard.update') }}">
                             </div>
                             <br><br>
 
-
-
                         </form>
-
-
-
-
 
                     </div>
                 </div>
-
-
 
             </div> <!-- // end row  -->
 
         </section>
         <!-- ///////////////// End Start Multiple Image Update Area ///////// -->
-
-
 
         <!-- ///////////////// Start Thambnail Image Update Area ///////// -->
 
@@ -284,10 +268,10 @@
                 <div class="col-md-12">
                     <div class="box bt-3 border-info">
                         <div class="box-header">
-                            <h4 class="box-title">{{ trans('admin.main-thambnail') }}
-                                <strong>{{ trans('admin.update') }}</strong></h4>
+                            <h4 class="box-title">{{ trans('admin/dashboard.thumbnail') }}
+                                <strong>{{ trans('admin/dashboard.update') }}</strong>
+                            </h4>
                         </div>
-
 
                         <form method="post" action="{{ route('update-product-thambnail') }}"
                             enctype="multipart/form-data">
@@ -307,7 +291,7 @@
 
                                             <p class="card-text">
                                             <div class="form-group">
-                                                <label class="form-control-label">{{ trans('admin.change-image') }} <span
+                                                <label class="form-control-label">{{ trans('admin/dashboard.change-image') }} <span
                                                         class="tx-danger">*</span></label>
                                                 <input type="file" name="product_thambnail" class="form-control"
                                                     onChange="mainThamUrl(this)">
@@ -320,46 +304,25 @@
 
                                 </div><!--  end col md 3		 -->
 
-
                             </div>
 
                             <div class="text-xs-right">
                                 <input type="submit" class="btn btn-rounded btn-primary mb-5"
-                                    value="{{ trans('admin.update') }}">
+                                    value="{{ trans('admin/dashboard.update') }}">
                             </div>
                             <br><br>
 
-
-
                         </form>
-
-
-
-
 
                     </div>
                 </div>
-
-
 
             </div> <!-- // end row  -->
 
         </section>
         <!-- ///////////////// End Start Thambnail Image Update Area ///////// -->
 
-
-
-
-
-
-
-
-
     </div>
-
-
-
-
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -384,8 +347,6 @@
                     alert('danger');
                 }
             });
-
-
 
             $('select[name="subcategory_id"]').on('change', function() {
                 var subcategory_id = $(this).val();
@@ -412,7 +373,6 @@
         });
     </script>
 
-
     <script type="text/javascript">
         function mainThamUrl(input) {
             if (input.files && input.files[0]) {
@@ -425,7 +385,6 @@
         }
     </script>
 
-
     <script>
         $(document).ready(function() {
             $('#multiImg').on('change', function() { //on file input change
@@ -436,7 +395,7 @@
 
                     $.each(data, function(index, file) { //loop though each file
                         if (/(\.|\/)(gif|jpe?g|png)$/i.test(file
-                            .type)) { //check supported file type
+                                .type)) { //check supported file type
                             var fRead = new FileReader(); //new filereader
                             fRead.onload = (function(file) { //trigger function on successful read
                                 return function(e) {
@@ -444,7 +403,7 @@
                                             e.target.result).width(80)
                                         .height(80); //create image element 
                                     $('#preview_img').append(
-                                    img); //append image to output element
+                                        img); //append image to output element
                                 };
                             })(file);
                             fRead.readAsDataURL(file); //URL representing the file's data.

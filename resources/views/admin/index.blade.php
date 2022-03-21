@@ -1,6 +1,8 @@
 @extends('admin.admin_master')
+@section('title')
+    {{ trans('admin/sidebar.dashboard') }} | {{ trans('admin/dashboard.home') }}
+@endsection
 @section('admin')
-
     <div class="container-full">
 
         <!-- Main content -->
@@ -13,7 +15,7 @@
                                 <i class="text-primary mr-0 font-size-24 mdi mdi-account-multiple"></i>
                             </div>
                             <div>
-                                <p class="text-mute mt-20 mb-0 font-size-16">{{ trans('admin.today-sale') }}</p>
+                                <p class="text-mute mt-20 mb-0 font-size-16">{{ trans('admin/dashboard.today-sales') }}</p>
                                 <h3 class="mb-0 font-weight-500">$ <small class="text-success"> $</small></h3>
                             </div>
                         </div>
@@ -26,7 +28,7 @@
                                 <i class="text-warning mr-0 font-size-24 mdi mdi-car"></i>
                             </div>
                             <div>
-                                <p class="text-mute mt-20 mb-0 font-size-16">{{ trans('admin.monthly-sale') }} </p>
+                                <p class="text-mute mt-20 mb-0 font-size-16">{{ trans('admin/dashboard.month-sales') }} </p>
                                 <h3 class="mb-0 font-weight-500">$ <small class="text-success"> $</small></h3>
                             </div>
                         </div>
@@ -39,7 +41,7 @@
                                 <i class="text-info mr-0 font-size-24 mdi mdi-sale"></i>
                             </div>
                             <div>
-                                <p class="text-mute mt-20 mb-0 font-size-16">{{ trans('admin.yearly-sale') }} </p>
+                                <p class="text-mute mt-20 mb-0 font-size-16">{{ trans('admin/dashboard.year-sales') }} </p>
                                 <h3 class=" mb-0 font-weight-500">$ <small class="text-success"> $</small></h3>
                             </div>
                         </div>
@@ -52,28 +54,22 @@
                                 <i class="text-danger mr-0 font-size-24 mdi mdi-phone-incoming"></i>
                             </div>
                             <div>
-                                <p class="text-mute mt-20 mb-0 font-size-16">{{ trans('admin.pending-orders') }} </p>
+                                <p class="text-mute mt-20 mb-0 font-size-16">{{ trans('admin/sidebar.pending-orders') }} </p>
                                 <h3 class=" mb-0 font-weight-500"> <small class="text-success">
-                                      {{count($orders)}}  {{ trans('admin.order') }} </small></h3>
+                                        {{ count($orders) }} {{ trans('admin/dashboard.order') }} </small></h3>
                             </div>
                         </div>
                     </div>
                 </div>
 
-
                 <div class="col-12">
                     <div class="box">
                         <div class="box-header">
                             <h4 class="box-title align-items-start flex-column">
-                                {{ trans('admin.recent-orders') }}
+                                {{ trans('admin/dashboard.recent-orders') }}
 
                             </h4>
                         </div>
-
-                        {{-- @php
-$orders = App\Models\Order::where('status','pending')->orderBy('id','DESC')->get();
-
-	@endphp --}}
 
                         <div class="box-body">
                             <div class="table-responsive">
@@ -82,17 +78,17 @@ $orders = App\Models\Order::where('status','pending')->orderBy('id','DESC')->get
 
                                         <tr class="text-uppercase bg-lightest">
                                             <th style="min-width: 250px"><span
-                                                    class="">{{ trans('admin.date') }}</span></th>
+                                                    class="">{{ trans('admin/dashboard.date') }}</span></th>
                                             <th style="min-width: 100px"><span
-                                                    class="text-fade">{{ trans('admin.invoice') }}</span></th>
+                                                    class="text-fade">{{ trans('admin/dashboard.invoice') }}</span></th>
                                             <th style="min-width: 100px"><span
-                                                    class="text-fade">{{ trans('admin.amount') }}</span></th>
+                                                    class="text-fade">{{ trans('admin/dashboard.amount') }}</span></th>
                                             <th style="min-width: 150px"><span
-                                                    class="text-fade">{{ trans('admin.payment') }}</span></th>
+                                                    class="text-fade">{{ trans('admin/dashboard.payment-method') }}</span></th>
                                             <th style="min-width: 130px"><span
-                                                    class="text-fade">{{ trans('admin.status') }}</span></th>
+                                                    class="text-fade">{{ trans('admin/dashboard.status') }}</span></th>
                                             <th style="min-width: 120px"><span
-                                                    class="text-fade">{{ trans('admin.process') }}</span> </th>
+                                                    class="text-fade">{{ trans('admin/dashboard.process') }}</span> </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -109,7 +105,7 @@ $orders = App\Models\Order::where('status','pending')->orderBy('id','DESC')->get
 
                                                 <td width="25%">
                                                     <a href="{{ route('pending.order.details', $item->id) }}"
-                                                        class="btn btn-info" title="{{ trans('admin.edit') }}"><i
+                                                        class="btn btn-info" title="{{ trans('admin/dashboard.order-details') }}"><i
                                                             class="fa fa-eye"></i> </a>
 
                                                 </td>

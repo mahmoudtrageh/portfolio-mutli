@@ -2,16 +2,15 @@
 @section('home_content')
 
 @section('title')
-    {{ trans('site.whishlist') }}
+    {{ trans('site/layout.wishlist') }}
 @endsection
-
 
 <!-- Page Title
 ============================================= -->
 <section id="page-title" style="background-color: #752651;">
 
     <div class="container clearfix">
-        <h1 class="text-white">المفصلات</h1>
+        <h1 class="text-white">{{ trans('site/layout.wishlist') }}</h1>
         <ol class="breadcrumb">
 
         </ol>
@@ -28,7 +27,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th colspan="4" class="heading-title">{{ trans('site.whishlist') }}</th>
+                                    <th colspan="4" class="heading-title">{{ trans('site/layout.wishlist') }}</th>
                                 </tr>
                             </thead>
                             <tbody id="wishlist">
@@ -41,15 +40,7 @@
             </div><!-- /.row -->
         </div><!-- /.sigin-in-->
 
-
-
         <br>
     </div>
-
-
-
-
-
-
 
 @endsection

@@ -1,43 +1,37 @@
 @extends('admin.admin_master')
+@section('title')
+    {{ trans('admin/sidebar.dashboard') }} | {{ trans('admin/dashboard.edit-testmonial') }}
+@endsection
 @section('admin')
     <!-- Content Wrapper. Contains page content -->
 
     <div class="container-full">
         <!-- Content Header (Page header) -->
 
-
         <!-- Main content -->
         <section class="content">
             <div class="row">
 
-
-
-
-
-
                 <!--   ------------ Edit Slider Page -------- -->
-
-
                 <div class="col-12">
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ trans('admin.edit-slider') }} </h3>
+                            <h3 class="box-title">{{ trans('admin/dashboard.edit-testmonial') }} </h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="table-responsive">
 
-
-                                <form method="post" action="{{ route('update.testmonial',$testmonial->id) }}"
+                                <form method="post" action="{{ route('update.testmonial', $testmonial->id) }}"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $testmonial->id }}">
 
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">تعديل المستخدم</label>
+                                        <label for="exampleInputEmail1">{{ trans('admin/dashboard.user') }}</label>
                                         <input type="text" name="user" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp" value="{{ $testmonials->user }}">
+                                            aria-describedby="emailHelp" value="{{ $testmonial->user }}">
 
                                         @error('user')
                                             <span class="text-danger"> {{ $message }}</span>
@@ -45,11 +39,10 @@
 
                                     </div>
 
-
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">تعديل الوظيفة</label>
+                                        <label for="exampleInputEmail1">{{ trans('admin/dashboard.job') }}</label>
                                         <input type="text" name="job" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp" value="{{ $testmonials->job }}">
+                                            aria-describedby="emailHelp" value="{{ $testmonial->job }}">
 
                                         @error('job')
                                             <span class="text-danger"> {{ $message }}</span>
@@ -58,23 +51,17 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">النص</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                            name="text">
-                                        {{ $testmonials->text }}
+                                        <label for="exampleFormControlTextarea1">{{ trans('admin/dashboard.text') }}</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text">
+                                        {{ $testmonial->text }}
                                         </textarea>
                                     </div>
 
-
                                     <div class="text-xs-right">
                                         <input type="submit" class="btn btn-rounded btn-primary mb-5"
-                                            value="{{ trans('admin.update') }}">
+                                            value="{{ trans('admin/dashboard.update') }}">
                                     </div>
                                 </form>
-
-
-
-
 
                             </div>
                         </div>
@@ -82,9 +69,6 @@
                     </div>
                     <!-- /.box -->
                 </div>
-
-
-
 
             </div>
             <!-- /.row -->

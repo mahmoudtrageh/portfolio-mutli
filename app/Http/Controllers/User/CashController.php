@@ -12,10 +12,6 @@ use Illuminate\Support\Facades\Session;
 use Auth;
 use Carbon\Carbon; 
 
-use Illuminate\Support\Facades\Mail;
-use App\Mail\OrderMail;
-use App\Mail\OrderMailEn;
-
 class CashController extends Controller
 {
      public function CashOrder(Request $request){
@@ -87,7 +83,7 @@ class CashController extends Controller
      Cart::destroy();
 
      $notification = array(
-			'message' => trans('site.your-order-place-success'),
+			'message' => trans('site/controllers.your-order-place-success'),
 			'alert-type' => 'success'
 		);
 

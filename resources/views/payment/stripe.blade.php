@@ -2,9 +2,8 @@
 @section('home_content')
 
 @section('title')
-    {{ trans('site.stripe-payment-page') }}
+    Stripe
 @endsection
-
 
 <style>
     /**
@@ -37,22 +36,18 @@
 
 </style>
 
-
 <!-- Page Title
 ============================================= -->
 <section id="page-title" style="background-color: #752651;">
 
     <div class="container clearfix">
-        <h1 class="text-white">الدفع / stripe</h1>
+        <h1 class="text-white">{{ trans('site/body.payment') }} / stripe</h1>
         <ol class="breadcrumb">
 
         </ol>
     </div>
 
 </section><!-- #page-title end -->
-
-
-
 
 <div class="body-content">
     <div class="container">
@@ -65,42 +60,40 @@
                         <div class="panel-group">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h4 class="unicase-checkout-title">{{ trans('site.your-shopping-amount') }}</h4>
+                                    <h4 class="unicase-checkout-title">{{ trans('site/body.shopping-cost') }}</h4>
                                 </div>
                                 <div class="">
                                     <ul class="nav-checkout-progress list-unstyled">
 
-
                                         <hr>
                                         <li>
                                             @if (Session::has('coupon'))
-                                                <strong>{{ trans('site.sub-total') }}: </strong> ${{ $cartTotal }}
+                                                <strong>{{ trans('site/body.subtotal') }}: </strong> ${{ $cartTotal }}
                                                 <hr>
 
-                                                <strong>{{ trans('site.coupon-name') }} : </strong>
+                                                <strong>{{ trans('site/body.coupon-name') }} : </strong>
                                                 {{ session()->get('coupon')['coupon_name'] }}
                                                 ( {{ session()->get('coupon')['coupon_discount'] }} % )
                                                 <hr>
 
-                                                <strong>{{ trans('site.coupon-discount') }} : </strong>
+                                                <strong>{{ trans('site/body.discount-value') }} : </strong>
                                                 ${{ session()->get('coupon')['discount_amount'] }}
                                                 <hr>
 
-                                                <strong>{{ trans('site.grand-total') }} : </strong>
+                                                <strong>{{ trans('site/body.grand-total') }} : </strong>
                                                 ${{ session()->get('coupon')['total_amount'] }}
                                                 <hr>
                                             @else
-                                                <strong>{{ trans('site.sub-total') }}: </strong> ${{ $cartTotal }}
+                                                <strong>{{ trans('site/body.subtotal') }}: </strong>
+                                                ${{ $cartTotal }}
                                                 <hr>
 
-                                                <strong>{{ trans('site.grand-total') }} : </strong>
+                                                <strong>{{ trans('site/body.grand-total') }} : </strong>
                                                 ${{ $cartTotal }}
                                                 <hr>
                                             @endif
 
                                         </li>
-
-
 
                                     </ul>
                                 </div>
@@ -110,19 +103,13 @@
                     <!-- checkout-progress-sidebar -->
                 </div> <!--  // end col md 6 -->
 
-
-
-
-
-
-
                 <div class="col-md-6">
                     <!-- checkout-progress-sidebar -->
                     <div class="checkout-progress-sidebar ">
                         <div class="panel-group">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h4 class="unicase-checkout-title">{{ trans('site.select-payment-method') }}</h4>
+                                    <h4 class="unicase-checkout-title">{{ trans('site/body.select-payment-method') }}</h4>
                                 </div>
 
                                 <form action="{{ route('stripe.order') }}" method="post" id="payment-form">
@@ -134,7 +121,8 @@
                                             <input type="hidden" name="email" value="{{ $data['shipping_email'] }}">
                                             <input type="hidden" name="phone" value="{{ $data['shipping_phone'] }}">
                                             <input type="hidden" name="post_code" value="{{ $data['post_code'] }}">
-                                            <input type="hidden" name="province_id" value="{{ $data['province_id'] }}">
+                                            <input type="hidden" name="province_id"
+                                                value="{{ $data['province_id'] }}">
                                             <input type="hidden" name="address" value="{{ $data['address'] }}">
                                             <input type="hidden" name="notes" value="{{ $data['notes'] }}">
 
@@ -147,46 +135,29 @@
                                         <div id="card-errors" role="alert"></div>
                                     </div>
                                     <br>
-                                    <button class="btn btn-primary">{{ trans('site.submit-payment') }}</button>
+                                    <button class="btn btn-primary">{{ trans('site/body.payment') }}</button>
                                 </form>
-
-
 
                             </div>
                         </div>
                     </div>
                     <!-- checkout-progress-sidebar -->
                 </div><!--  // end col md 6 -->
-
-
-
-
-
-
-
                 </form>
             </div><!-- /.row -->
         </div><!-- /.checkout-box -->
-        <!-- === ===== BRANDS CAROUSEL ==== ======== -->
-
-
-
-
-
-
-
-
-        <!-- ===== == BRANDS CAROUSEL : END === === -->
+       
     </div><!-- /.container -->
 </div><!-- /.body-content -->
 
-
-
-
-
+@php
+$gateway = DB::table('gateways')->first();
+@endphp
+<div id="stripe_key" class="d-none">{{$gateway->stripe_key}}</div>
 <script type="text/javascript">
     // Create a Stripe client.
-    var stripe = Stripe('pk_test_SASnr1WX5yqU81sBi4jsb5oJ');
+    var stripe_key_value = document.getElementById('stripe_key');
+    var stripe = Stripe(stripe_key_value.innerText);
     // Create an instance of Elements.
     var elements = stripe.elements();
     // Custom styling can be passed to options when creating an Element.

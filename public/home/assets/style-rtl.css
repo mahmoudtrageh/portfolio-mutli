@@ -2812,16 +2812,11 @@ label.checkbox {
 	left: auto;
 }
 
-
-/* services */
-
-.services i {
-	font-size: 50px;
-	color:#1FBADF;
+#posts .entry {
+	position: unset !important;
 }
 
-/* footer */
-
-.socials i {
-	font-size: 30px;
+#shop .product {
+	position: unset !important;
 }
+

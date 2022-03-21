@@ -1,4 +1,7 @@
 @extends('admin.admin_master')
+@section('title')
+    {{ trans('admin/sidebar.dashboard') }} | {{ trans('admin/dashboard.edit-user') }}
+@endsection
 @section('admin')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -16,13 +19,12 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col">
-                            <form method="post" action="{{ route('admin.user.user.update') }}" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('admin.user.user.update') }}"
+                                enctype="multipart/form-data">
                                 @csrf
 
                                 <input type="hidden" name="id" value="{{ $adminuser->id }}">
                                 <input type="hidden" name="old_image" value="{{ $adminuser->img }}">
-
-
 
                                 <div class="row">
                                     <div class="col-12">
@@ -31,7 +33,8 @@
                                             <div class="col-md-6">
 
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.first_name') }} <span class="text-danger">*</span></h5>
+                                                    <h5>{{ trans('admin/dashboard.firstname') }} <span
+                                                            class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="first_name" class="form-control"
                                                             value="{{ $adminuser->first_name }}">
@@ -43,7 +46,8 @@
                                             <div class="col-md-6">
 
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.last_name') }} <span class="text-danger">*</span></h5>
+                                                    <h5>{{ trans('admin/dashboard.lastname') }} <span
+                                                            class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="last_name" class="form-control"
                                                             value="{{ $adminuser->last_name }}">
@@ -52,17 +56,13 @@
 
                                             </div> <!-- end cold md 6 -->
 
-
-
-                                            
-
                                         </div> <!-- end row 	 -->
 
-                                        <div class="row">   
+                                        <div class="row">
                                             <div class="col-md-6">
 
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.email') }} <span class="text-danger">*</span>
+                                                    <h5>{{ trans('admin/dashboard.email') }} <span class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
                                                         <input type="email" name="email" class="form-control"
@@ -78,11 +78,10 @@
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <h5>{{ trans('admin.image') }} <span class="text-danger">*</span>
+                                                    <h5>{{ trans('admin/dashboard.image') }} <span class="text-danger">*</span>
                                                     </h5>
                                                     <div class="controls">
-                                                        <input type="file" name="img" class="form-control"
-                                                            id="image">
+                                                        <input type="file" name="img" class="form-control" id="image">
                                                     </div>
                                                 </div>
                                             </div><!-- end cold md 6 -->
@@ -94,17 +93,15 @@
                                             </div><!-- end cold md 6 -->
                                         </div><!-- end row 	 -->
 
-
-
                                         <hr>
-
-                                        
-
 
                                         <div class="text-xs-right">
                                             <input type="submit" class="btn btn-rounded btn-primary mb-5"
-                                                value="{{ trans('admin.update') }}">
+                                                value="{{ trans('admin/dashboard.update') }}">
                                         </div>
+                                    </div>
+                                </div>
+                        
                             </form>
 
                         </div>
@@ -118,10 +115,7 @@
 
         </section>
 
-
-
     </div>
-
 
     <script type="text/javascript">
         $(document).ready(function() {

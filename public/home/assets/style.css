@@ -3826,11 +3826,6 @@ body:not(.top-search-open) .top-search-parent #primary-menu-trigger {
 		padding-bottom: 19px;
 	}
 
-	.header-size-md .menu-container > .menu-item > .menu-link {
-		padding-top: 29px;
-		padding-bottom: 29px;
-	}
-
 	.header-size-lg .menu-container > .menu-item > .menu-link {
 		padding-top: 49px;
 		padding-bottom: 49px;
@@ -4722,19 +4717,18 @@ body:not(.top-search-open) .top-search-parent #primary-menu-trigger {
 
 .top-cart-number {
 	display: block;
-	position: absolute;
-	top: -7px;
-	left: auto;
-	right: -8px;
-	font-size: 0.625rem;
-	color: #FFF;
-	width: 1.125rem;
-	height: 1.125rem;
-	line-height: 1.125rem;
-	text-align: center;
-	border-radius: 50%;
-	z-index: 1;
-	overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 15px;
+    font-size: 0.625rem;
+    color: #FFF;
+    width: 1.125rem;
+    height: 1.125rem;
+    line-height: 1.125rem;
+    text-align: center;
+    border-radius: 50%;
+    z-index: 1;
+    overflow: hidden;
 }
 
 .top-cart-number::before {
@@ -15715,3 +15709,7 @@ label.checkbox { padding-left: 20px; }
 	animation-name: fadeOutUpSmall;
 }
 
+.lang .sub-menu-container {
+	width: 100px;
+    margin-right: 10px;
+}

@@ -32,7 +32,7 @@ class ReviewController extends Controller
     	]);
 
     	$notification = array(
-			'message' => trans('site.review-will-approve-admin'),
+			'message' => trans('site/controllers.review-will-approve-admin'),
 			'alert-type' => 'success'
 		);
 
@@ -57,7 +57,7 @@ class ReviewController extends Controller
     	Review::where('id',$id)->update(['status' => 1]);
 
     	$notification = array(
-            'message' => trans('site.review-approved-success'),
+            'message' => trans('site/controllers.review-approved-success'),
             'alert-type' => 'success'
         );
 
@@ -77,15 +77,13 @@ class ReviewController extends Controller
     	Review::findOrFail($id)->delete();
 
     	$notification = array(
-            'message' => trans('site.review-deleted-success'),
-            'alert-type' => 'success'
+            'message' => trans('site/controllers.review-deleted-success'),
+            'alert-type' => 'error'
         );
 
         return redirect()->back()->with($notification);
 
     } // end method 
-
-
 
 }
  

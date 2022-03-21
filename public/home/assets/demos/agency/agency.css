@@ -15,9 +15,6 @@
 	#header.sticky-header #header {
 		border-color: transparent;
 	}
-	.menu-container > .menu-item {
-		margin: 0 10px;
-	}
 
 	.menu-container > .menu-item > .menu-link {
 		letter-spacing: 2px;

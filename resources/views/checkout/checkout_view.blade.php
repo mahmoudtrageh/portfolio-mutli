@@ -2,25 +2,21 @@
 @section('home_content')
 
 @section('title')
-    {{ trans('site.checkout') }}
+    {{ trans('site/body.checkout') }}
 @endsection
-
 
 <!-- Page Title
 ============================================= -->
 <section id="page-title" style="background-color: #752651;">
 
     <div class="container clearfix">
-        <h1 class="text-white">الدفع</h1>
+        <h1 class="text-white">{{ trans('site/body.payment') }}</h1>
         <ol class="breadcrumb">
 
         </ol>
     </div>
 
 </section><!-- #page-title end -->
-
-
-
 
 <div class="body-content">
     <div class="container">
@@ -43,28 +39,26 @@
 
                                         <!-- guest-login -->
                                         <div class="col-md-6 col-sm-6 already-registered-login">
-                                            <h4 class="checkout-subtitle"><b>{{ trans('site.shipping-address') }}</b>
+                                            <h4 class="checkout-subtitle"><b>{{ trans('site/body.shipping-address') }}</b>
                                             </h4>
 
                                             <form class="register-form" action="{{ route('checkout.store') }}"
                                                 method="POST">
                                                 @csrf
 
-
                                                 <div class="form-group">
                                                     <label class="info-title"
-                                                        for="exampleInputEmail1"><b>{{ trans('site.shipping-name') }}</b>
+                                                        for="exampleInputEmail1"><b>{{ trans('site/body.name') }}</b>
                                                         <span>*</span></label>
                                                     <input type="text" name="shipping_name"
                                                         class="form-control unicase-form-control text-input"
-                                                        id="exampleInputEmail1" placeholder="Full Name"
+                                                        id="exampleInputEmail1" placeholder="{{ trans('site/body.full-name') }}"
                                                         value="{{ Auth::guard('web')->user()->name }}" required="">
                                                 </div> <!-- // end form group  -->
 
-
                                                 <div class="form-group">
                                                     <label class="info-title"
-                                                        for="exampleInputEmail1"><b>{{ trans('site.email') }} </b>
+                                                        for="exampleInputEmail1"><b>{{ trans('site/layout.email') }} </b>
                                                         <span>*</span></label>
                                                     <input type="email" name="shipping_email"
                                                         class="form-control unicase-form-control text-input"
@@ -75,25 +69,23 @@
 
                                                 <div class="form-group">
                                                     <label class="info-title"
-                                                        for="exampleInputEmail1"><b>{{ trans('site.phone') }}</b>
+                                                        for="exampleInputEmail1"><b>{{ trans('site/layout.phone') }}</b>
                                                         <span>*</span></label>
                                                     <input type="number" name="shipping_phone"
                                                         class="form-control unicase-form-control text-input"
-                                                        id="exampleInputEmail1" placeholder="Phone"
+                                                        id="exampleInputEmail1" placeholder="{{ trans('site/layout.phone') }}"
                                                         value="{{ Auth::guard('web')->user()->phone }}" required="">
                                                 </div> <!-- // end form group  -->
 
 
                                                 <div class="form-group">
                                                     <label class="info-title"
-                                                        for="exampleInputEmail1"><b>{{ trans('site.post-code') }} </b>
+                                                        for="exampleInputEmail1"><b>{{ trans('site/body.postal-code') }} </b>
                                                         <span>*</span></label>
                                                     <input type="text" name="post_code"
                                                         class="form-control unicase-form-control text-input"
-                                                        id="exampleInputEmail1" placeholder="Post Code" required="">
+                                                        id="exampleInputEmail1" placeholder="{{ trans('site/body.postal-code') }}" required="">
                                                 </div> <!-- // end form group  -->
-
-
 
                                         </div>
                                         <!-- guest-login -->
@@ -102,12 +94,12 @@
                                         <div class="col-md-6 col-sm-6 already-registered-login">
 
                                             <div class="form-group">
-                                                <h5><b>{{ trans('admin.province-name') }} </b> <span
+                                                <h5><b>{{ trans('site/body.province-name') }} </b> <span
                                                         class="text-danger">*</span></h5>
                                                 <div class="controls">
                                                     <select name="province_id" class="form-control" required="">
                                                         <option value="" selected="" disabled="">
-                                                            {{ trans('admin.province-name') }}</option>
+                                                            {{ trans('site/body.province-name') }}</option>
                                                         @foreach ($provinces as $item)
                                                             <option value="{{ $item->id }}">{{ $item->name }}
                                                             </option>
@@ -119,20 +111,19 @@
                                                 </div>
                                             </div> <!-- // end form group -->
 
-											<div class="form-group">
+                                            <div class="form-group">
                                                 <label class="info-title"
-                                                    for="exampleInputEmail1">{{ trans('site.address') }}
+                                                    for="exampleInputEmail1">{{ trans('site/body.address') }}
                                                     <span>*</span></label>
-                                                <textarea class="form-control" cols="30" rows="5"
-                                                    placeholder="{{ trans('site.address') }}" name="address"></textarea>
+                                                <textarea class="form-control" cols="30" rows="5" placeholder="{{ trans('site/body.address') }}"
+                                                    name="address"></textarea>
                                             </div> <!-- // end form group  -->
 
                                             <div class="form-group">
                                                 <label class="info-title"
-                                                    for="exampleInputEmail1">{{ trans('site.notes') }}
+                                                    for="exampleInputEmail1">{{ trans('site/body.notes') }}
                                                     <span>*</span></label>
-                                                <textarea class="form-control" cols="30" rows="5"
-                                                    placeholder="{{ trans('site.notes') }}" name="notes"></textarea>
+                                                <textarea class="form-control" cols="30" rows="5" placeholder="{{ trans('site/body.notes') }}" name="notes"></textarea>
                                             </div> <!-- // end form group  -->
 
                                         </div>
@@ -155,47 +146,48 @@
                         <div class="panel-group">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h4 class="unicase-checkout-title">{{ trans('site.check-out-progress') }}</h4>
+                                    <h4 class="unicase-checkout-title">{{ trans('site/body.complete-payment') }}</h4>
                                 </div>
                                 <div class="">
                                     <ul class="nav nav-checkout-progress list-unstyled">
 
                                         @foreach ($carts as $item)
                                             <li>
-                                                <strong>{{ trans('site.image') }}: </strong>
+                                                <strong>{{ trans('site/body.image') }}: </strong>
                                                 <img src="{{ asset($item->options->image) }}"
                                                     style="height: 50px; width: 50px;">
                                             </li>
-											<hr>
+                                            <hr>
                                             <li>
-                                                <strong>{{ trans('site.qty') }}: </strong>
+                                                <strong>{{ trans('site/body.qty') }}: </strong>
                                                 ({{ $item->qty }})
-                                                                                              
                                             </li>
                                         @endforeach
                                         <hr>
                                         <li>
                                             @if (Session::has('coupon'))
-                                                <strong>{{ trans('site.sub-total') }}: </strong> ${{ $cartTotal }}
+                                                <strong>{{ trans('site/body.subtotal') }}: </strong>
+                                                ${{ $cartTotal }}
                                                 <hr>
 
-                                                <strong>{{ trans('site.coupon-name') }} : </strong>
+                                                <strong>{{ trans('site/body.coupon-name') }} : </strong>
                                                 {{ session()->get('coupon')['coupon_name'] }}
                                                 ( {{ session()->get('coupon')['coupon_discount'] }} % )
                                                 <hr>
 
-                                                <strong>{{ trans('site.coupon-discount') }} : </strong>
+                                                <strong>{{ trans('site/body.discount-value') }} : </strong>
                                                 ${{ session()->get('coupon')['discount_amount'] }}
                                                 <hr>
 
-                                                <strong>{{ trans('site.grand-total') }} : </strong>
+                                                <strong>{{ trans('site/body.grand-total') }} : </strong>
                                                 ${{ session()->get('coupon')['total_amount'] }}
                                                 <hr>
                                             @else
-                                                <strong>{{ trans('site.sub-total') }}: </strong> ${{ $cartTotal }}
+                                                <strong>{{ trans('site/body.subtotal') }}: </strong>
+                                                ${{ $cartTotal }}
                                                 <hr>
 
-                                                <strong>{{ trans('site.grand-total') }} : </strong>
+                                                <strong>{{ trans('site/body.grand-total') }} : </strong>
                                                 ${{ $cartTotal }}
                                                 <hr>
                                             @endif
@@ -212,65 +204,42 @@
                     <!-- checkout-progress-sidebar -->
                 </div>
 
-
-
-
-
-
-
                 <div class="col-md-4">
                     <!-- checkout-progress-sidebar -->
                     <div class="checkout-progress-sidebar ">
                         <div class="panel-group">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h4 class="unicase-checkout-title">{{ trans('site.select-payment-method') }}</h4>
+                                    <h4 class="unicase-checkout-title">{{ trans('site/body.select-payment-method') }}</h4>
                                 </div>
-
 
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="">Stripe</label>
                                         <input type="radio" name="payment_method" value="stripe">
-                                        <img src="{{ asset('frontend/assets/images/payments/4.png') }}">
+                                        <img src="{{ asset('home/assets/images/payments/4.png') }}">
                                     </div> <!-- end col md 4 -->
 
                                     <div class="col-md-6">
                                         <label for="">{{ trans('site.cash') }}</label>
                                         <input type="radio" name="payment_method" value="cash">
-                                        <img src="{{ asset('frontend/assets/images/payments/6.png') }}">
+                                        <img src="{{ asset('home/assets/images/payments/6.png') }}">
                                     </div> <!-- end col md 4 -->
-
 
                                 </div> <!-- // end row  -->
                                 <hr>
                                 <button type="submit"
-                                    class="btn-upper btn btn-primary checkout-page-button">{{ trans('site.payment-step') }}</button>
-
-
+                                    class="btn-upper btn btn-primary checkout-page-button">{{ trans('site/body.complete-payment') }}</button>
                             </div>
                         </div>
                     </div>
                     <!-- checkout-progress-sidebar -->
                 </div>
 
-
-
-
-
-
-
                 </form>
             </div><!-- /.row -->
         </div><!-- /.checkout-box -->
         <!-- === ===== BRANDS CAROUSEL ==== ======== -->
-
-
-
-
-
-
-
 
         <!-- ===== == BRANDS CAROUSEL : END === === -->
     </div><!-- /.container -->

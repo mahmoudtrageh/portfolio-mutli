@@ -1,17 +1,17 @@
 <!-- Footer
 		============================================= -->
-		<footer id="footer">
+		<footer id="footer" style="background-color:#752651;" class="text-white">
 			<!-- Copyrights
 			============================================= -->
 			<div id="copyrights">
-				<div class="container">
+				<div class="container border-0">
 					@php
 					$contacts = DB::table('contacts')->first();
 					$settings = DB::table('settings')->first();
 				  @endphp
 					<div class="row">
-						<div class="col-lg-6 text-right">
-							جميع الحقوق محفظوظة &copy; 2020 <a href="{{url('/')}}">{{$settings->site_name}}</a> <br>
+						<div class="col-lg-6 copy-right">
+							{{ trans('site/layout.copyright') }} &copy; 2020 <a href="{{url('/')}}">{{$settings->site_name}}</a> <br>
 						</div>
 
 						<div class="col-lg-6 border-0 socials">

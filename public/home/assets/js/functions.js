@@ -985,6 +985,8 @@ var SEMICOLON = SEMICOLON || {};
 				e.stopPropagation();
 				e.preventDefault();
 			});
+
+		
 		},
 
 		miscFunctions: function(){

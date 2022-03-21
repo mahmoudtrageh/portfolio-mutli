@@ -1,4 +1,7 @@
 @extends('admin.admin_master')
+@section('title')
+    {{ trans('admin/sidebar.dashboard') }} | {{ trans('admin/dashboard.edit-permission') }}
+@endsection
 @section('admin')
     <!-- Content Wrapper. Contains page content -->
 
@@ -15,7 +18,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ trans('admin.edit-category') }} </h3>
+                            <h3 class="box-title">{{ trans('admin/dashboard.edit-permission') }} </h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -25,7 +28,7 @@
                                     @csrf
 
                                     <div class="form-group">
-                                        <h5>{{ trans('admin.category') }} <span class="text-danger">*</span></h5>
+                                        <h5>{{ trans('admin/dashboard.name') }} <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="name" class="form-control"
                                                 value="{{ $permission->name }}">
@@ -35,7 +38,7 @@
 
                                     <div class="text-xs-right">
                                         <input type="submit" class="btn btn-rounded btn-primary mb-5"
-                                            value="{{ trans('admin.update') }}">
+                                            value="{{ trans('admin/dashboard.update') }}">
                                     </div>
                                 </form>
 
@@ -45,9 +48,6 @@
                     </div>
                     <!-- /.box -->
                 </div>
-
-
-
 
             </div>
             <!-- /.row -->

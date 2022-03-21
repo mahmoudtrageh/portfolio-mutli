@@ -1,29 +1,25 @@
 @extends('layouts.master_home')
-
-<style>
-    .entry {
-        position: unset !important;
-    }
-
-</style>
-
+@section('title')
+    {{ trans('site/body.blog') }}
+@endsection
 @section('home_content')
     <!-- Page Title
-              ============================================= -->
+                  ============================================= -->
     <section id="page-title" style="background-color: #752651;">
 
         <div class="container clearfix">
-            <h1 class="text-white">المدونة</h1>
+            <h1 class="text-white">{{ trans('site/body.blog') }}</h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a class="text-white" href="{{ route('home') }}">الرئيسية</a></li>
-                <li class="breadcrumb-item text-white active" aria-current="page">المدونة</li>
+                <li class="breadcrumb-item"><a class="text-white"
+                        href="{{ route('home') }}">{{ trans('site/layout.home') }}</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">{{ trans('site/body.blog') }}</li>
             </ol>
         </div>
 
     </section><!-- #page-title end -->
 
     <!-- Content
-              ============================================= -->
+                  ============================================= -->
     <section id="content">
         <div class="content-wrap">
             <div class="container clearfix">
@@ -31,7 +27,7 @@
                 <div class="row">
                     <div class="col-md-9">
                         <!-- Posts
-                            ============================================= -->
+                                ============================================= -->
                         <div id="posts" class="post-grid row grid-container gutter-50 clearfix" data-layout="fitRows">
 
                             @foreach ($posts as $post)
@@ -56,8 +52,8 @@
                                         </div>
                                         <div class="entry-content">
                                             <p>{!! substr($post->post_details, 0, 100) !!}</p>
-                                            <a href="{{ route('blog.post', $post->id) }}" class="more-link">اقرأ
-                                                المزيد</a>
+                                            <a href="{{ route('blog.post', $post->id) }}"
+                                                class="more-link">{{ trans('site/body.read-more') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -66,7 +62,7 @@
                         </div><!-- #posts end -->
 
                         <!-- Pagination
-                            ============================================= -->
+                                ============================================= -->
 
                         {{ $posts->links() }}
 
@@ -76,7 +72,7 @@
                     <div class="col-md-3">
                         <!-- ======== ====CATEGORY======= === -->
                         <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
-                            <h3 class="section-title">{{ trans('site.blog-category') }}</h3>
+                            <h3 class="section-title">{{ trans('site/body.blog-categories') }}</h3>
                             <div class="sidebar-widget-body m-t-10">
                                 <div class="accordion">
 
@@ -84,8 +80,12 @@
                                         <ul class="list-group">
                                             <a href="{{ url('blog/category/post/' . $category->id) }}">
                                                 <li class="list-group-item">
-                                                    @php $all_posts = DB::table('blog_posts')->where('category_id', $category->id)->count(); @endphp
-                                                    {{ $category->blog_category_name }} ({{$all_posts}})
+                                                    @php
+                                                        $all_posts = DB::table('blog_posts')
+                                                            ->where('category_id', $category->id)
+                                                            ->count();
+                                                    @endphp
+                                                    {{ $category->blog_category_name }} ({{ $all_posts }})
                                                 </li>
                                             </a>
 

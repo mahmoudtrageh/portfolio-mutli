@@ -16,8 +16,32 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('home/assets/css/bootstrap.css') }}" type="text/css" />
+    @if (session()->get('lang') == 'ar')
     <link rel="stylesheet" href="{{ asset('home/assets/style.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('home/assets/style-rtl.css') }}" type="text/css" />
+    <style>
+         .header-icons {
+            margin-right: auto;
+        }
+        .copy-right, .forget-password, .login-form .form-group{
+            text-align: right;
+        }
+    </style>
+    @else
+    <link rel="stylesheet" href="{{ asset('home/assets/style.css') }}" type="text/css" />
+    <style>
+        .header-icons {
+            margin-left: auto;
+        }
+        .top-cart-number{
+            right: 15px;
+            left: 0;
+        }
+        .copy-right, .forget-password, .login-form .form-group{
+            text-align: left;
+        }
+   </style>
+    @endif
     <link rel="stylesheet" href="{{ asset('home/assets/css/all.min.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('home/assets/css/magnific-popup.css') }}" type="text/css" />
     <!-- Agency Demo Specific Stylesheet -->
@@ -31,7 +55,6 @@
 
     <link rel="stylesheet" href="{{ asset('home/assets/css/components/ion.rangeslider.css') }}" type="text/css" />
 
-
     @php
         $settings = DB::table('settings')->first();
         $route = Route::current()->getName();
@@ -40,7 +63,7 @@
 
     <!-- Document Title
  ============================================= -->
-    <title> {{ $settings->site_name }} | الرئيسية</title>
+    <title> @yield('title')</title>
     <style>
         html {
             scroll-behavior: smooth;
@@ -72,6 +95,24 @@
         }
         .checked {
             color: orange;
+        }
+        /* services */
+
+        .services i {
+            font-size: 50px;
+            color:#1FBADF;
+        }
+
+        /* footer */
+
+        .socials i {
+            font-size: 30px;
+        }
+
+
+        .lang .sub-menu-container {
+            width: 100px;
+            margin-left: 10px;
         }
     </style>
 
@@ -134,16 +175,16 @@
                       <div class="col-md-4">
 
                           <ul class="list-group">
-                              <li class="list-group-item">{{ trans('site.product-price') }}: <strong
+                              <li class="list-group-item">{{ trans('site/body.price') }}: <strong
                                       class="text-danger">$<span id="pprice"></span></strong>
                                   <del id="oldprice">$</del>
                               </li>
-                              <li class="list-group-item">{{ trans('site.product-code') }}: <strong id="pcode"></strong>
+                              <li class="list-group-item">{{ trans('site/body.product-code') }}: <strong id="pcode"></strong>
                               </li>
-                              <li class="list-group-item">{{ trans('site.category') }}: <strong
+                              <li class="list-group-item">{{ trans('site/body.category') }}: <strong
                                       id="pcategory"></strong></li>
                               </li>
-                              <li class="list-group-item">{{ trans('site.stock') }}: <span
+                              <li class="list-group-item">{{ trans('site/body.stock') }}: <span
                                       class="badge badge-pill badge-success" id="aviable"
                                       style="background: green; color: white;"></span>
                                   <span class="badge badge-pill badge-danger" id="stockout"
@@ -154,25 +195,20 @@
 
                       </div><!-- // end col md -->
 
-
                       <div class="col-md-4">
 
                           <div class="form-group">
-                              <label for="qty">{{ trans('site.quantity') }}</label>
+                              <label for="qty">{{ trans('site/body.qty') }}</label>
                               <input type="number" class="form-control" id="qty" value="1" min="1">
                           </div> <!-- // end form group -->
 
                           <input type="hidden" id="product_id">
                           <button type="submit" class="btn btn-primary mb-2"
-                              onclick="addToCart()">{{ trans('site.add-to-cart') }}</button>
-
+                              onclick="addToCart()">{{ trans('site/body.add-to-cart') }}</button>
 
                       </div><!-- // end col md -->
 
-
                   </div> <!-- // end row -->
-
-
 
               </div> <!-- // end modal Body -->
 
@@ -195,6 +231,33 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e4b85f98de5201f"></script>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+    <script>
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+            switch(type){
+            case 'info':
+            toastr.info(" {{ Session::get('message') }} ");
+            break;
+        
+            case 'success':
+            toastr.success(" {{ Session::get('message') }} ");
+            break;
+        
+            case 'warning':
+            toastr.warning(" {{ Session::get('message') }} ");
+            break;
+        
+            case 'error':
+            toastr.error(" {{ Session::get('message') }} ");
+            break;
+            }
+        @endif
+    </script>
+    
     <script>
         $('#oc-portfolio.owl-carousel').owlCarousel({
             rtl: true,
@@ -246,7 +309,7 @@
                     items: 3
                 },
                 1000: {
-                    items: 4
+                    items: 5
                 }
             }
         });
@@ -268,8 +331,8 @@ $minprice = min($prices);
 
 @endphp
 
-<div id="minprice">{{$minprice}}</div>
-<div id="maxprice">{{$maxprice}}</div>
+<div class="d-none" id="minprice">{{$minprice}}</div>
+<div class="d-none" id="maxprice">{{$maxprice}}</div>
 
 
 <script>
@@ -606,7 +669,7 @@ function addToWishList(product_id) {
               </div>
           </td>
 <td class="col-md-2">
-  <button class="btn btn-primary icon" type="button" title="{{ trans('site.add-to-cart') }}" data-toggle="modal" data-target="#exampleModal" id="${value.product_id}" onclick="productView(this.id)"> {{ trans('site.add-to-cart') }} </button>
+  <button class="btn btn-primary icon" type="button" title="{{ trans('site/body.add-to-cart') }}" data-toggle="modal" data-target="#exampleModal" id="${value.product_id}" onclick="productView(this.id)"> {{ trans('site/body.add-to-cart') }} </button>
 </td>
 <td class="col-md-1 close-btn">
   <button type="submit" class="" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="fa fa-times"></i></button>

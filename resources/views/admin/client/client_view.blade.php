@@ -1,4 +1,7 @@
 @extends('admin.admin_master')
+@section('title')
+    {{ trans('admin/sidebar.dashboard') }} | {{ trans('admin/sidebar.clients') }}
+@endsection
 @section('admin')
     <!-- Content Wrapper. Contains page content -->
 
@@ -16,7 +19,8 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">العملاء <span class="badge badge-pill badge-danger">
+                            <h3 class="box-title">{{ trans('admin/sidebar.clients') }} <span
+                                    class="badge badge-pill badge-danger">
                                     {{ count($clients) }} </span></h3>
                         </div>
                         <!-- /.box-header -->
@@ -25,10 +29,10 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>{{ trans('admin.brand-en') }} </th>
-                                            <th>{{ trans('admin.brand-ar') }}</th>
-                                            <th>{{ trans('admin.image') }}</th>
-                                            <th>{{ trans('admin.process') }}</th>
+                                            <th>{{ trans('admin/dashboard.name') }} </th>
+                                            <th>{{ trans('admin/dashboard.image') }}</th>
+                                            <th>{{ trans('admin/dashboard.url') }}</th>
+                                            <th>{{ trans('admin/dashboard.process') }}</th>
 
                                         </tr>
                                     </thead>
@@ -38,12 +42,14 @@
                                                 <td>{{ $item->name }}</td>
                                                 <td><img src="{{ asset($item->image) }}"
                                                         style="width: 70px; height: 40px;"> </td>
+                                                <td>{{$item->url}}</td>
                                                 <td>
-                                                    <a href="{{ route('client.edit', $item->id) }}" class="btn btn-info"
-                                                        title="{{ trans('admin.edit') }}"><i class="fa fa-pencil"></i>
+                                                    <a href="{{ route('client.edit', $item->id) }}"
+                                                        class="btn btn-info" title="{{ trans('admin/dashboard.edit') }}"><i
+                                                            class="fa fa-pencil"></i>
                                                     </a>
                                                     <a href="{{ route('client.delete', $item->id) }}"
-                                                        class="btn btn-danger" title="{{ trans('admin.delete') }}"
+                                                        class="btn btn-danger" title="{{ trans('admin/dashboard.delete') }}"
                                                         id="delete">
                                                         <i class="fa fa-trash"></i></a>
                                                 </td>
@@ -59,31 +65,25 @@
                     </div>
                     <!-- /.box -->
 
-
                 </div>
                 <!-- /.col -->
 
-
                 <!--   ------------ Add Brand Page -------- -->
-
-
                 <div class="col-lg-6 col-md-12">
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ trans('admin.add-brand') }} </h3>
+                            <h3 class="box-title">{{ trans('admin/dashboard.add-client') }} </h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="table-responsive">
 
-
                                 <form method="post" action="{{ route('client.store') }}" enctype="multipart/form-data">
                                     @csrf
 
-
                                     <div class="form-group">
-                                        <h5>{{ trans('admin.brand-name-en') }} <span class="text-danger">*</span></h5>
+                                        <h5>{{ trans('admin/dashboard.name') }} <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="name" class="form-control">
                                             @error('name')
@@ -92,9 +92,8 @@
                                         </div>
                                     </div>
 
-
                                     <div class="form-group">
-                                        <h5>{{ trans('admin.brand-image') }} <span class="text-danger">*</span></h5>
+                                        <h5>{{ trans('admin/dashboard.image') }} <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="file" name="image" class="form-control">
                                             @error('image')
@@ -103,8 +102,8 @@
                                         </div>
                                     </div>
 
-									<div class="form-group">
-                                        <h5>{{ trans('admin.brand-name-en') }} <span class="text-danger">*</span></h5>
+                                    <div class="form-group">
+                                        <h5>{{ trans('admin/dashboard.url') }} <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text" name="url" class="form-control">
                                             @error('url')
@@ -113,16 +112,11 @@
                                         </div>
                                     </div>
 
-
                                     <div class="text-xs-right">
                                         <input type="submit" class="btn btn-rounded btn-primary mb-5"
-                                            value="{{ trans('admin.add') }}">
+                                            value="{{ trans('admin/dashboard.add') }}">
                                     </div>
                                 </form>
-
-
-
-
 
                             </div>
                         </div>
@@ -130,9 +124,6 @@
                     </div>
                     <!-- /.box -->
                 </div>
-
-
-
 
             </div>
             <!-- /.row -->

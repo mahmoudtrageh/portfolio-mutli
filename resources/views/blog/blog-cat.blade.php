@@ -1,10 +1,14 @@
 @extends('layouts.master_home')
-
+@section('title')
+{{ trans('site/body.blog') }} | {{$category->blog_category_name}}
+@endsection
 <style>
     .entry {
         position: unset !important;
     }
-
+    .header-misc-icon{
+        top: 14px;
+    }
 </style>
 
 @section('home_content')
@@ -13,9 +17,9 @@
     <section id="page-title" style="background-color: #752651;">
 
         <div class="container clearfix">
-            <h1 class="text-white">المدونة</h1>
+            <h1 class="text-white">{{ trans('site/body.blog') }}</h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a class="text-white" href="{{ route('blog.view') }}">المدونة</a></li>
+                <li class="breadcrumb-item"><a class="text-white" href="{{ route('blog.view') }}">{{ trans('site/body.blog') }}</a></li>
                 <li class="breadcrumb-item text-white active" aria-current="page">{{$category->blog_category_name}}</li>
             </ol>
         </div>
@@ -56,8 +60,7 @@
                                         </div>
                                         <div class="entry-content">
                                             <p>{!! substr($post->post_details, 0, 100) !!}</p>
-                                            <a href="{{ route('blog.post', $post->id) }}" class="more-link">اقرأ
-                                                المزيد</a>
+                                            <a href="{{ route('blog.post', $post->id) }}" class="more-link">{{ trans('site/body.read-more') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -76,7 +79,7 @@
                     <div class="col-md-3">
                         <!-- ======== ====CATEGORY======= === -->
                         <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
-                            <h3 class="section-title">{{ trans('site.blog-category') }}</h3>
+                            <h3 class="section-title">{{ trans('site/body.blog-categories') }}</h3>
                             <div class="sidebar-widget-body m-t-10">
                                 <div class="accordion">
 
