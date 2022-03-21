@@ -12,8 +12,8 @@ return [
     'menu' => 'القائمة',
     'submenu' => 'القائمة الفرعية',
     'members' => 'الأعضاء',
-    'all-admins' => 'جميع المدراء',
-    'all-users' => 'جميع المستخدمين',
+    'all-admins' => 'المدراء',
+    'all-users' => 'المستخدمين',
     'permissions' => 'الصلاحيات',
     'roles' => 'الأدوار',
     'messages' => 'الرسائل',
@@ -38,7 +38,11 @@ return [
     'brands' => 'الماركات',
     'category' => 'القسم',
     'all-categories' => 'الأقسام',
-    'all-subcategories' => 'جميع الأقسام الفرعية',
+<<<<<<< HEAD
+    'all-subcategories' => 'الأقسام الفرعية',
+=======
+    'all-subcategories' => 'الأقسام الفرعية',
+>>>>>>> sample
     'products' => 'المنتجات',
     'add-products' => 'إضافة منتجات',
     'products-management' => 'إدارة المنتجات',
@@ -55,5 +59,5 @@ return [
     'pending-reviews' => 'تقييمات معلقة',
     'published-reviews' => 'تقييمات منشورة',
     'products-stock' => 'مخزن المنتجات',
-    'all-reports' => 'جميع التقارير',
+    'all-reports' => 'التقارير',
 ];
