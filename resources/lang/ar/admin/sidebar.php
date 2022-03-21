@@ -37,7 +37,7 @@ return [
     'store-management' => 'إدارة المتجر',
     'brands' => 'الماركات',
     'category' => 'القسم',
-    'all-categories' => 'جميع الأقسام',
+    'all-categories' => 'الأقسام',
     'all-subcategories' => 'جميع الأقسام الفرعية',
     'products' => 'المنتجات',
     'add-products' => 'إضافة منتجات',

@@ -16,7 +16,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">{{ trans('admin.category-list') }} <span
+                            <h3 class="box-title">{{ trans('admin/sidebar.all-categories') }} <span
                                     class="badge badge-pill badge-danger"> {{ count($category) }} </span></h3>
                         </div>
                         <!-- /.box-header -->
