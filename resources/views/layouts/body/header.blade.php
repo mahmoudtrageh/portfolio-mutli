@@ -131,7 +131,7 @@
                                     </ul>
                                 </nav>
                             @else
-                                <a class="px-1" href="#modal-login" data-lightbox="inline"><i class="fas fa-sign-in-alt"></i></a>
+                                <a class="px-1 position-relative header-icon" href="#modal-login" data-lightbox="inline"><i class="fas fa-sign-in-alt"></i></a>
                             @endauth
 
                         </div><!-- #top-search end -->

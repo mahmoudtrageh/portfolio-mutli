@@ -89,7 +89,7 @@ return [
 	'login-to-review' => 'Login to be able to add review',
 	'tracking' => 'Tracking',
 	'shipping-by' => 'Shipping By',
-	'' => '',
+	'customer-reviews' => 'Customer Reviews',
 	'' => '',
 	'' => '',
 	'' => '',

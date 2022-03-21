@@ -9,7 +9,7 @@
         top: unset !important;
         bottom: 0 !important;
     }
-    .header-misc-icon{
+    .header-misc-icon, .header-icon{
         top: 14px;
     }
 </style>
@@ -177,7 +177,7 @@
 
                                 <button type="submit" data-toggle="tooltip" data-placement="right" title="{{ trans('site/layout.cart') }}"
                                     onclick="addToCart()" class="btn btn-primary"><i
-                                        class="fa fa-shopping-cart inner-right-vs"></i>{{ trans('site.add-to-cart') }}</button>
+                                        class="fa fa-shopping-cart inner-right-vs"></i>{{ trans('site/body.add-to-cart') }}</button>
 
                                 <a class="btn btn-danger" data-toggle="tooltip" data-placement="right" title="{{ trans('site/layout.wishlist') }}"
                                     href="#" id="{{ $product->id }}" onclick="addToWishList(this.id)">
@@ -231,7 +231,7 @@
                                             <div id="reviews" class="clearfix">
 
                                                 <div class="product-reviews">
-                                                    <h4 class="title">{{ trans('site.customer-reviews') }}</h4>
+                                                    <h4 class="title">{{ trans('site/body.customer-reviews') }}</h4>
 
                                                     @php
                                                         $reviews = App\Models\Review::where('product_id', $product->id)

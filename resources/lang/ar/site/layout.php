@@ -26,5 +26,5 @@ return [
     'track-your-order' => 'تتبع طلبك',
 	'invoice-number' => 'رقم الفاتورة',
 	'track-now' => 'تتبع الأن',
-    'home' => 'الرئيسية'
+    'home' => 'الرئيسية',
 ];
