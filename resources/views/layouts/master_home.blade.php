@@ -115,7 +115,7 @@
             margin-left: 10px;
         }
         body{
-            overflow: hidden;
+            overflow-x: hidden;
         }
     </style>
 
