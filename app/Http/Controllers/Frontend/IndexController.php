@@ -9,6 +9,8 @@ use App\Models\Brand;
 use Image;
 use Illuminate\Http\Request;
 use Response;
+use Session;
+use App\Models\Counter;
 
 use AtmCode\ArPhpLaravel\ArPhpLaravel;
  
@@ -26,8 +28,13 @@ class IndexController extends Controller
 
 	public function textOnImage(Request $request)  
     {  
-       $img = Image::make('upload/ramadan.jpg');  
+		$session_token = Session::get('_token');
 
+		if($request->type == 'فرد') {
+			$img = Image::make('upload/individual.jpg');  
+		} else {
+			$img = Image::make('upload/all.jpg');  
+		}
 	  
 	   $name = ArPhpLaravel::utf8Glyphs($request->name);
 
@@ -41,21 +48,27 @@ class IndexController extends Controller
 		  
       });  
 	  
-       $img->save('upload/ramadan/ramadan_with_text.jpg');  
+       $img->save('upload/ramadan/ramadan_with_text_'.$session_token.'.jpg');  
 
+	   $counter = Counter::first();
+
+	  
+	   $counter['count'] = $counter->count + 1;
+	  	$counter->save();
 
 	   $notification = array(
-		'message' => 'نجحت العملية',
+		'message' => 'تم إنشاء الصورة بنجاح',
 		'alert-type' => 'success'
 	);
 
-	return redirect()->back()->with($notification);
+	return redirect()->route('write.image')->with($notification);
     }
 
 	public function downloadImage() {
-	
-		$filepath = public_path('upload/ramadan/')."ramadan_with_text.jpg";
-		return Response::download($filepath);		
+		$session_token = Session::get('_token');
+		
+		$filepath = public_path('upload/ramadan/')."ramadan_with_text_$session_token.jpg";
+		return response()->download($filepath)->deleteFileAfterSend(true);
 
 	}
 }
