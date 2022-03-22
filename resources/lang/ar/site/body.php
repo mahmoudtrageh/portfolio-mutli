@@ -89,5 +89,5 @@ return [
 	'tracking' => 'تتبع',
     'shipping-by' => 'شحن بواسطة',
 	'customer-reviews' => 'تقييمات العملاء',
-	'dda' => 'dada',
+	'' => '',
 ];
