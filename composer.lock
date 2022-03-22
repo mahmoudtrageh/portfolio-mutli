@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7eaa96a7acbb69cd590cad3c0062bb4c",
+    "content-hash": "cb65913e85a4275a1879a0bd7b537e72",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -61,6 +61,76 @@
                 "source": "https://github.com/asm89/stack-cors/tree/v2.1.1"
             },
             "time": "2022-01-18T09:12:03+00:00"
+        },
+        {
+            "name": "atm-code/ar-php-laravel",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/atm-code/ar-php-laravel.git",
+                "reference": "a1ba1a28c10817539b62f537408c1c89b7c47d67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/atm-code/ar-php-laravel/zipball/a1ba1a28c10817539b62f537408c1c89b7c47d67",
+                "reference": "a1ba1a28c10817539b62f537408c1c89b7c47d67",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0|^9.0",
+                "khaled.alshamaa/ar-php": "^6.2",
+                "php": "^7.1|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^7.0",
+                "phpunit/phpunit": "^9.5.10"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AtmCode\\ArPhpLaravel\\ArPhpLaravelServiceProvider"
+                    ],
+                    "aliases": {
+                        "ArPhpLaravel": "AtmCode\\ArPhpLaravel\\ArPhpLaravelFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AtmCode\\ArPhpLaravel\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ashraf Monshi",
+                    "email": "wh7r.com@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "ar-php-laravel",
+            "homepage": "https://github.com/atm-code/ar-php-laravel",
+            "keywords": [
+                "ar-php-laravel",
+                "arabic",
+                "arabic-calendar",
+                "arabic-glyphs",
+                "arabic-numbers",
+                "arabic-segments-identifier",
+                "arabic-sentiment",
+                "arabic-sql-query",
+                "atm-code",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/atm-code/ar-php-laravel/issues",
+                "source": "https://github.com/atm-code/ar-php-laravel/tree/1.6.0"
+            },
+            "time": "2022-02-08T21:51:46+00:00"
         },
         {
             "name": "brick/math",
@@ -1167,6 +1237,61 @@
                 }
             ],
             "time": "2021-12-16T16:49:26+00:00"
+        },
+        {
+            "name": "khaled.alshamaa/ar-php",
+            "version": "v6.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/khaled-alshamaa/ar-php.git",
+                "reference": "a3eb0dfe14ea9ba0fa291673c52ae7a75749e35a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/khaled-alshamaa/ar-php/zipball/a3eb0dfe14ea9ba0fa291673c52ae7a75749e35a",
+                "reference": "a3eb0dfe14ea9ba0fa291673c52ae7a75749e35a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "9.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ArPHP\\I18N\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Khaled Al-Sham'aa",
+                    "email": "khaled@ar-php.org",
+                    "homepage": "http://www.ar-php.org"
+                }
+            ],
+            "description": "Set of functionalities enable Arabic website developers to serve professional search, present and process Arabic content in PHP",
+            "homepage": "https://github.com/khaled-alshamaa/ar-php",
+            "keywords": [
+                "arabic",
+                "arabic-calendar",
+                "arabic-glyphs",
+                "arabic-numbers",
+                "arabic-segments-identifier",
+                "arabic-sentiment",
+                "arabic-sql-query"
+            ],
+            "support": {
+                "issues": "https://github.com/khaled-alshamaa/ar-php/issues",
+                "source": "https://github.com/khaled-alshamaa/ar-php/tree/v6.2.0"
+            },
+            "time": "2021-06-20T18:15:36+00:00"
         },
         {
             "name": "laravel/framework",

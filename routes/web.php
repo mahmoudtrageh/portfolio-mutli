@@ -542,6 +542,12 @@ Route::post('/contact/form', [ContactsController::class, 'ContactForm'])->name('
 
 Route::get('/', [IndexController::class, 'Home'])->name('home');
 
+Route::get('/write-image', [IndexController::class, 'writeOnImagePage'])->name('write.image');
+
+Route::post('/write-on-image', [IndexController::class, 'textOnImage'])->name('write.on.image');
+
+Route::get('/download-image', [IndexController::class, 'downloadImage'])->name('download.image');
+
 // Portfolio Site Routes #########################################
 
 // Blog Site Routes ##############################################
