@@ -114,6 +114,9 @@
             width: 100px;
             margin-left: 10px;
         }
+        body{
+            overflow: hidden;
+        }
     </style>
 
 <script src="https://js.stripe.com/v3/"></script>

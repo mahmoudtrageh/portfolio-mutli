@@ -7,11 +7,11 @@
 <!-- Header
   ============================================= -->
 <header id="header" data-sticky-shrink="false" class="header-size-md border-bottom-0">
+   
     <div id="header-wrap">
+        
         <div class="header-row justify-content-between">
 
-            <!-- Logo
-            ============================================= -->
             <div id="logo" class="mr-2 my-4">
                 @php
                     $settings = DB::table('settings')->first();
@@ -34,7 +34,7 @@
 
             <!-- Primary Navigation
             ============================================= -->
-            <nav class="primary-menu flex-lg-grow-1">
+            <nav class="primary-menu flex-lg-grow-1 pr-5">
 
                 @php
                     $menus = App\Models\Menu::all()->load('submenu');
@@ -43,14 +43,14 @@
                 <ul class="menu-container">
                     @foreach ($menus as $menu)
                         <li class="menu-item">
-                            <a class="menu-link" href="{{URL::to('/')}}/{{ $menu->url }}">
+                            <a class="menu-link" href="{{ URL::to('/') }}/{{ $menu->url }}">
                                 <div> {{ $menu->menu_name }}</div>
                             </a>
                             @if ($menu->submenu->count())
                                 <ul class="sub-menu-container">
                                     @foreach ($menu->submenu as $subitem)
                                         <li class="menu-item">
-                                            <a class="menu-link" href="{{URL::to('/')}}/{{ $subitem->url }}">
+                                            <a class="menu-link" href="{{ URL::to('/') }}/{{ $subitem->url }}">
                                                 <div>{{ $subitem->submenu_name }}</div>
                                             </a>
                                         </li>
@@ -61,8 +61,9 @@
                     @endforeach
                     <ul class="header-icons">
                         <div id="top-cart" class="header-misc-icon d-inline-block position-relative px-2">
-                            <a class="px-1" href="#" id="top-cart-trigger"><i class="fa-solid fa-basket-shopping"></i><span
-                                    class="top-cart-number" id="cartQty"></span></a>
+                            <a class="px-1" href="#" id="top-cart-trigger"><i
+                                    class="fa-solid fa-basket-shopping"></i><span class="top-cart-number"
+                                    id="cartQty"></span></a>
                             <div class="top-cart-content">
                                 <div class="top-cart-title">
                                     <h4>{{ trans('site/layout.cart') }}</h4>
@@ -131,7 +132,8 @@
                                     </ul>
                                 </nav>
                             @else
-                                <a class="px-1 position-relative header-icon" href="#modal-login" data-lightbox="inline"><i class="fas fa-sign-in-alt"></i></a>
+                                <a class="px-1 position-relative header-icon" href="#modal-login" data-lightbox="inline"><i
+                                        class="fas fa-sign-in-alt"></i></a>
                             @endauth
 
                         </div><!-- #top-search end -->
@@ -163,9 +165,6 @@
                 </ul>
 
             </nav><!-- #primary-menu end -->
-            
-            <!-- Top Login
-       ============================================= -->
 
             <!-- Login/Register Modal -->
             <div class="modal-register mfp-hide" id="modal-login">
@@ -179,7 +178,8 @@
                             class="button button-large btn-block si-colored si-facebook nott font-weight-normal ls0 center m-0"><i
                                 class="icon-facebook-sign"></i>{{ trans('site/layout.login-facebook') }}</a>
 
-                        <div class="divider divider-center"><span class="position-relative" style="top: -2px">{{ trans('site/layout.or') }}</span>
+                        <div class="divider divider-center"><span class="position-relative"
+                                style="top: -2px">{{ trans('site/layout.or') }}</span>
                         </div>
 
                         <form id="login-form" name="login-form" class="mb-0 row" action="{{ route('login') }}"
@@ -192,7 +192,8 @@
 
                             <div class="col-12 mt-4">
                                 <input type="password" id="login-form-password" name="password" value=""
-                                    class="form-control not-dark" placeholder="{{ trans('site/layout.password') }}" />
+                                    class="form-control not-dark"
+                                    placeholder="{{ trans('site/layout.password') }}" />
                             </div>
 
                             <div class="col-12 forget-password mt-3">
@@ -201,12 +202,14 @@
                             </div>
 
                             <div class="col-12 mt-4">
-                                <button type="submit" class="button btn-block m-0">{{ trans('site/layout.login') }}</button>
+                                <button type="submit"
+                                    class="button btn-block m-0">{{ trans('site/layout.login') }}</button>
                             </div>
                         </form>
                     </div>
                     <div class="card-footer py-4 center">
-                        <p class="mb-0">{{ trans('site/layout.dont-have-account') }}? <a href="#modal-register"
+                        <p class="mb-0">{{ trans('site/layout.dont-have-account') }}? <a
+                                href="#modal-register"
                                 data-lightbox="inline"><u>{{ trans('site/layout.register') }}</u></a></p>
                     </div>
                 </div>
@@ -240,21 +243,24 @@
                             </div>
 
                             <div class="col-12 form-group">
-                                <label class="info-title pt-3" for="exampleInputEmail2">{{ trans('site/layout.email') }}
+                                <label class="info-title pt-3"
+                                    for="exampleInputEmail2">{{ trans('site/layout.email') }}
                                     <span>*</span></label>
                                 <input type="email" id="email" name="email"
                                     class="form-control unicase-form-control text-input">
                             </div>
 
                             <div class="col-12 form-group">
-                                <label class="info-title pt-3" for="exampleInputEmail1">{{ trans('site/layout.phone') }}
+                                <label class="info-title pt-3"
+                                    for="exampleInputEmail1">{{ trans('site/layout.phone') }}
                                     <span>*</span></label>
                                 <input type="text" id="phone" name="phone"
                                     class="form-control unicase-form-control text-input">
                             </div>
 
                             <div class="col-12 form-group">
-                                <label class="info-title pt-3" for="exampleInputEmail1">{{ trans('site/layout.password') }}
+                                <label class="info-title pt-3"
+                                    for="exampleInputEmail1">{{ trans('site/layout.password') }}
                                     <span>*</span></label>
                                 <input type="password" id="password" name="password"
                                     class="form-control unicase-form-control text-input">
@@ -269,13 +275,15 @@
                             </div>
 
                             <div class="col-12 mt-4">
-                                <button type="submit" class="button btn-block m-0">{{ trans('site/layout.register') }}</button>
+                                <button type="submit"
+                                    class="button btn-block m-0">{{ trans('site/layout.register') }}</button>
                             </div>
 
                         </form>
                     </div>
                     <div class="card-footer py-4 center">
-                        <p class="mb-0">{{ trans('site/layout.have-account') }}? <a href="#modal-login" data-lightbox="inline"><u>{{ trans('site/layout.login') }}</u></a></p>
+                        <p class="mb-0">{{ trans('site/layout.have-account') }}? <a href="#modal-login"
+                                data-lightbox="inline"><u>{{ trans('site/layout.login') }}</u></a></p>
                     </div>
                 </div>
             </div>
@@ -285,7 +293,8 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">{{ trans('site/layout.track-your-order') }}
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                {{ trans('site/layout.track-your-order') }}
                             </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -310,8 +319,9 @@
                 </div>
             </div>
             <!-- Order Traking Modal -->
+
         </div>
 
     </div>
-    <div class="header-wrap-clone"></div>
+
 </header><!-- #header end -->
