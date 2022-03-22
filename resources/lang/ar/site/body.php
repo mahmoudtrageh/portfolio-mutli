@@ -88,6 +88,6 @@ return [
 	'login-to-review' => 'سجل الدخول لكي تتمكن من إضافة التقييم',
 	'tracking' => 'تتبع',
     'shipping-by' => 'شحن بواسطة',
-	'customer-reviews' => 'أو تقييمات العملاء',
+	'customer-reviews' => 'تقييمات العملاء',
 	'' => '',
 ];
