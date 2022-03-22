@@ -43,9 +43,16 @@
                 <ul class="menu-container">
                     @foreach ($menus as $menu)
                         <li class="menu-item">
+                            @if($menu->url == '#')
+                            <a class="menu-link" href="{{ $menu->url }}">
+                                <div> {{ $menu->menu_name }}</div>
+                            </a>
+                            @else 
                             <a class="menu-link" href="{{ URL::to('/') }}/{{ $menu->url }}">
                                 <div> {{ $menu->menu_name }}</div>
                             </a>
+                            @endif
+                            
                             @if ($menu->submenu->count())
                                 <ul class="sub-menu-container">
                                     @foreach ($menu->submenu as $subitem)
