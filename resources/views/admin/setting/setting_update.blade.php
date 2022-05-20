@@ -167,6 +167,15 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="form-group">
+                                        <h5>نص صفحة الطباعة<span class="text-danger">*</span>
+                                        </h5>
+                                        <div class="controls">
+                                            <textarea type="text" name="print_paragraph" class="form-control">{{ $setting->print_paragraph }}</textarea>
+
+                                        </div>
+                                    </div>
+
                                             </div> <!-- end cold md 6 -->
 
                                         </div> <!-- end row 	 -->

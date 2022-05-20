@@ -45,6 +45,7 @@ class SettingController extends Controller
 				'youtube' => $request->youtube,
 				'instagram' => $request->instagram,
 				'github' => $request->github,
+				'print_paragraph' => $request->print_paragraph,
 				'logo' => $save_url,	
 			]);
 		}
@@ -67,6 +68,7 @@ class SettingController extends Controller
 				'youtube' => $request->youtube,
 				'instagram' => $request->instagram,
 				'github' => $request->github,
+				'print_paragraph' => $request->print_paragraph,
 				'favicon' => $last_img_favicon,
 			]);
 		} else {
@@ -82,6 +84,7 @@ class SettingController extends Controller
 				'linkedin' => $request->linkedin,
 				'youtube' => $request->youtube,
 				'instagram' => $request->instagram,
+				'print_paragraph' => $request->print_paragraph,
 				'github' => $request->github,
 			]);
 		}

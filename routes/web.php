@@ -18,6 +18,8 @@ use App\Http\Controllers\Main\MenuController;
 use App\Http\Controllers\Main\SubMenuController;
 use App\Http\Controllers\Main\EmailSettingsController;
 use App\Http\Controllers\Main\LangsController;
+use App\Http\Controllers\Main\DetailsController;
+
 // main controllers
 
 // store controllers 
@@ -175,6 +177,13 @@ Route::middleware('admin')->group(function () {
         Route::prefix('contact')->group(function () {
             Route::get('/message', [ContactController::class, 'AdminMessage'])->name('admin.message');
             Route::get('/delete/{id}', [ContactController::class, 'MessageDelete'])->name('message.delete');
+        });
+        // Contact Routes
+
+        // Contact Routes 
+        Route::prefix('printing')->group(function () {
+            Route::get('/printing', [ContactController::class, 'AdminPrinting'])->name('admin.printing');
+            Route::get('/delete/{id}', [ContactController::class, 'PrintingDelete'])->name('printing.delete');
         });
         // Contact Routes
 
@@ -503,6 +512,22 @@ Route::middleware('admin')->group(function () {
         });
         // Slider Routes
 
+        // Slider Routes 
+        Route::prefix('detail')->group(function () {
+
+            Route::get('/view', [DetailsController::class, 'DetailView'])->name('manage-details');
+
+            Route::post('/store', [DetailsController::class, 'DetailStore'])->name('detail.store');
+
+            Route::get('/edit/{id}', [DetailsController::class, 'DetailEdit'])->name('detail.edit');
+
+            Route::post('/update', [DetailsController::class, 'DetailUpdate'])->name('detail.update');
+
+            Route::get('/delete/{id}', [DetailsController::class, 'DetailDelete'])->name('detail.delete');
+        
+        });
+        // Slider Routes
+
         // Portfolio Routes #######################################################
 
     });
@@ -534,6 +559,8 @@ Route::post('/user/password/update', [UserProfileController::class, 'UserPasswor
 // Site Contact Routes 
 Route::get('/contact', [ContactsController::class, 'Contact'])->name('contact');
 Route::post('/contact/form', [ContactsController::class, 'ContactForm'])->name('contact.form');
+Route::post('/print/form', [ContactsController::class, 'PrintForm'])->name('print.form');
+
 // Site Contact Routes
 
 // Main Site Routes #########################################
@@ -542,11 +569,9 @@ Route::post('/contact/form', [ContactsController::class, 'ContactForm'])->name('
 
 Route::get('/', [IndexController::class, 'Home'])->name('home');
 
-Route::get('/write-image', [IndexController::class, 'writeOnImagePage'])->name('write.image');
+Route::get('/printer-details/{id}', [IndexController::class, 'printerDetails'])->name('printer.details');
 
-Route::post('/write-on-image', [IndexController::class, 'textOnImage'])->name('write.on.image');
-
-Route::get('/download-image', [IndexController::class, 'downloadImage'])->name('download.image');
+Route::get('/print-for-me', [IndexController::class, 'printForMe'])->name('print.for.me');
 
 // Portfolio Site Routes #########################################
 

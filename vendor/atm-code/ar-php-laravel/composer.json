@@ -1,0 +1,62 @@
+{
+    "name": "atm-code/ar-php-laravel",
+    "description": "ar-php-laravel",
+    "keywords": [
+        "atm-code",
+        "ar-php-laravel",
+        "laravel",
+        "Arabic",
+        "arabic-sentiment",
+        "arabic-numbers",
+        "arabic-glyphs",
+        "arabic-calendar",
+        "arabic-sql-query",
+        "arabic-segments-identifier"
+    ],
+    "homepage": "https://github.com/atm-code/ar-php-laravel",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ashraf Monshi",
+            "email": "wh7r.com@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1|^8.0",
+        "illuminate/support": "^8.0|^9.0",
+        "khaled.alshamaa/ar-php": "^6.2"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^7.0",
+        "phpunit/phpunit": "^9.5.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "AtmCode\\ArPhpLaravel\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AtmCode\\ArPhpLaravel\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AtmCode\\ArPhpLaravel\\ArPhpLaravelServiceProvider"
+            ],
+            "aliases": {
+                "ArPhpLaravel": "AtmCode\\ArPhpLaravel\\ArPhpLaravelFacade"
+            }
+        }
+    }
+}

@@ -6,6 +6,12 @@ use App\Http\Controllers\Controller;
 
 use App\Models\HomeAbout;
 use App\Models\Brand;
+use App\Models\Product;
+use App\Models\Service;
+use App\Models\Category;
+use App\Models\MultiImg;
+use App\Models\Detail;
+
 use Image;
 use Illuminate\Http\Request;
 use Response;
@@ -19,57 +25,33 @@ class IndexController extends Controller
 	public function Home(){
 		$brands = Brand::latest()->get();
 		$abouts = HomeAbout::first();
-		return view('home', compact('brands','abouts'));
+		$products = Product::latest()->get();
+		$services = Service::latest()->get();
+		return view('home', compact('brands','abouts', 'products', 'services'));
+	}
+	
+	public function printForMe() {
+
+		$details = Detail::latest()->get();
+
+		$abouts = HomeAbout::first();
+		return view('print-for-me', compact('abouts', 'details'));
+
 	}
 
-	public function writeOnImagePage(){
-		return view('write_image');
-	}
+	public function printerDetails($id) {
+		$product = Product::findOrFail($id);
+        $categories = Category::orderBy('category_name','ASC')->get();
 
-	public function textOnImage(Request $request)  
-    {  
-		$session_token = Session::get('_token');
+		$multiImag = MultiImg::where('product_id',$id)->get();
 
-		if($request->type == 'فرد') {
-			$img = Image::make('upload/individual.jpg');  
-		} else {
-			$img = Image::make('upload/all.jpg');  
-		}
-	  
-	   $name = ArPhpLaravel::utf8Glyphs($request->name);
-
-       $img->text($name , 4250, 850, function($font) {  
-		$font->file(public_path('/font.ttf'));  
-          $font->size(150);  
-          $font->color('#fff');  
-          $font->align('right');  
-          $font->valign('top'); 
-		  $font->angle(0);   
-		  
-      });  
-	  
-       $img->save('upload/ramadan/ramadan_with_text_'.$session_token.'.jpg');  
-
-	   $counter = Counter::first();
-
-	  
-	   $counter['count'] = $counter->count + 1;
-	  	$counter->save();
-
-	   $notification = array(
-		'message' => 'تم إنشاء الصورة بنجاح',
-		'alert-type' => 'success'
-	);
-
-	return redirect()->route('write.image')->with($notification);
-    }
-
-	public function downloadImage() {
-		$session_token = Session::get('_token');
-		
-		$filepath = public_path('upload/ramadan/')."ramadan_with_text_$session_token.jpg";
-		return response()->download($filepath)->deleteFileAfterSend(true);
+		$cat_id = $product->category_id;
+		$category = Category::findOrFail($cat_id);
+		$relatedProduct = Product::where('category_id',$cat_id)->where('id','!=',$id)->orderBy('id','DESC')->get();
+		$abouts = HomeAbout::first();
+		return view('printer-details', compact('abouts', 'category','categories', 'product','multiImag','relatedProduct'));
 
 	}
+
 }
  
